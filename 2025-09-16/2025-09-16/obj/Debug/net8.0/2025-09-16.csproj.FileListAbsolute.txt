@@ -1,0 +1,14 @@
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\bin\Debug\net8.0\2025-09-16.exe
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\bin\Debug\net8.0\2025-09-16.deps.json
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\bin\Debug\net8.0\2025-09-16.runtimeconfig.json
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\bin\Debug\net8.0\2025-09-16.dll
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\bin\Debug\net8.0\2025-09-16.pdb
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\obj\Debug\net8.0\2025-09-16.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\obj\Debug\net8.0\2025-09-16.AssemblyInfoInputs.cache
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\obj\Debug\net8.0\2025-09-16.AssemblyInfo.cs
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\obj\Debug\net8.0\2025-09-16.csproj.CoreCompileInputs.cache
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\obj\Debug\net8.0\2025-09-16.dll
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\obj\Debug\net8.0\refint\2025-09-16.dll
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\obj\Debug\net8.0\2025-09-16.pdb
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\obj\Debug\net8.0\2025-09-16.genruntimeconfig.cache
+C:\Users\mayer\Documents\Prog\2025-09-16\2025-09-16\obj\Debug\net8.0\ref\2025-09-16.dll
