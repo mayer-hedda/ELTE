@@ -1,0 +1,15 @@
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/bin/Debug/net9.0/2025-09-29_Hf
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/bin/Debug/net9.0/2025-09-29_Hf.deps.json
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/bin/Debug/net9.0/2025-09-29_Hf.runtimeconfig.json
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/bin/Debug/net9.0/2025-09-29_Hf.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/bin/Debug/net9.0/2025-09-29_Hf.pdb
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/obj/Debug/net9.0/2025-09-29_Hf.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/obj/Debug/net9.0/2025-09-29_Hf.AssemblyInfoInputs.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/obj/Debug/net9.0/2025-09-29_Hf.AssemblyInfo.cs
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/obj/Debug/net9.0/2025-09-29_Hf.csproj.CoreCompileInputs.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/obj/Debug/net9.0/2025-09-29_Hf.sourcelink.json
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/obj/Debug/net9.0/2025-09-29_Hf.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/obj/Debug/net9.0/refint/2025-09-29_Hf.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/obj/Debug/net9.0/2025-09-29_Hf.pdb
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/obj/Debug/net9.0/2025-09-29_Hf.genruntimeconfig.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/obj/Debug/net9.0/ref/2025-09-29_Hf.dll
