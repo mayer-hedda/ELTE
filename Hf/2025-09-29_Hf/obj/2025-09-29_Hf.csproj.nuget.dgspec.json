@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mayerhedda/Documents/GitHub/ELTE/2025-09-28_hf/2025-09-28_hf.csproj": {}
+    "/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/2025-09-29_Hf.csproj": {}
   },
   "projects": {
-    "/Users/mayerhedda/Documents/GitHub/ELTE/2025-09-28_hf/2025-09-28_hf.csproj": {
+    "/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/2025-09-29_Hf.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mayerhedda/Documents/GitHub/ELTE/2025-09-28_hf/2025-09-28_hf.csproj",
-        "projectName": "2025-09-28_hf",
-        "projectPath": "/Users/mayerhedda/Documents/GitHub/ELTE/2025-09-28_hf/2025-09-28_hf.csproj",
+        "projectUniqueName": "/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/2025-09-29_Hf.csproj",
+        "projectName": "2025-09-29_Hf",
+        "projectPath": "/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/2025-09-29_Hf.csproj",
         "packagesPath": "/Users/mayerhedda/.nuget/packages/",
-        "outputPath": "/Users/mayerhedda/Documents/GitHub/ELTE/2025-09-28_hf/obj/",
+        "outputPath": "/Users/mayerhedda/Documents/GitHub/ELTE/Hf/2025-09-29_Hf/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/mayerhedda/.nuget/NuGet/NuGet.Config"
