@@ -1,0 +1,14 @@
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\bin\Debug\net8.0\Progalap-hf-1.exe
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\bin\Debug\net8.0\Progalap-hf-1.deps.json
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\bin\Debug\net8.0\Progalap-hf-1.runtimeconfig.json
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\bin\Debug\net8.0\Progalap-hf-1.dll
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\bin\Debug\net8.0\Progalap-hf-1.pdb
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\obj\Debug\net8.0\Progalap-hf-1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\obj\Debug\net8.0\Progalap-hf-1.AssemblyInfoInputs.cache
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\obj\Debug\net8.0\Progalap-hf-1.AssemblyInfo.cs
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\obj\Debug\net8.0\Progalap-hf-1.csproj.CoreCompileInputs.cache
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\obj\Debug\net8.0\Progalap-hf-1.dll
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\obj\Debug\net8.0\refint\Progalap-hf-1.dll
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\obj\Debug\net8.0\Progalap-hf-1.pdb
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\obj\Debug\net8.0\Progalap-hf-1.genruntimeconfig.cache
+C:\Users\mayer\Documents\Prog\Progalap-hf-1\Progalap-hf-1\obj\Debug\net8.0\ref\Progalap-hf-1.dll
