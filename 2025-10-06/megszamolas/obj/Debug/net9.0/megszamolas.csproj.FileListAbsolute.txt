@@ -1,0 +1,5 @@
+/Users/mayerhedda/Documents/GitHub/ELTE/2025-10-06/megszamolas/obj/Debug/net9.0/megszamolas.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mayerhedda/Documents/GitHub/ELTE/2025-10-06/megszamolas/obj/Debug/net9.0/megszamolas.AssemblyInfoInputs.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/2025-10-06/megszamolas/obj/Debug/net9.0/megszamolas.AssemblyInfo.cs
+/Users/mayerhedda/Documents/GitHub/ELTE/2025-10-06/megszamolas/obj/Debug/net9.0/megszamolas.csproj.CoreCompileInputs.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/2025-10-06/megszamolas/obj/Debug/net9.0/megszamolas.sourcelink.json
