@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/allatertekesites/allatertekesites.csproj": {}
+    "/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/Allatertekesites.csproj": {}
   },
   "projects": {
-    "/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/allatertekesites/allatertekesites.csproj": {
+    "/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/Allatertekesites.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/allatertekesites/allatertekesites.csproj",
-        "projectName": "allatertekesites",
-        "projectPath": "/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/allatertekesites/allatertekesites.csproj",
+        "projectUniqueName": "/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/Allatertekesites.csproj",
+        "projectName": "Allatertekesites",
+        "projectPath": "/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/Allatertekesites.csproj",
         "packagesPath": "/Users/mayerhedda/.nuget/packages/",
-        "outputPath": "/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/allatertekesites/obj/",
+        "outputPath": "/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/mayerhedda/.nuget/NuGet/NuGet.Config"

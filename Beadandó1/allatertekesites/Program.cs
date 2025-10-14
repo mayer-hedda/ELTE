@@ -1,1 +1,0 @@
-﻿// Specifikáció: https://progalap.elte.hu/specifikacio/v1/?uuid=f638f4f1-d926-49dc-859e-f8ff42387f15

@@ -1,0 +1,38 @@
+﻿namespace Allatertekesites;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Specifikáció: https://progalap.elte.hu/specifikacio/v1/?uuid=a040865f-553a-4144-aac2-3aca08ed8769
+        // Stuktogram: https://progalap.elte.hu/stuki/v1/?uuid=20e6f4be-6391-4b51-be87-b43aaa38a837
+        
+        // Bekérés
+        int n;
+
+        Console.Write("Napok száma: ");
+        int.TryParse(Console.ReadLine(),  out n);
+
+        int[] bevetel = new int[n];
+        
+        Console.WriteLine("Bevételek: ");
+        for (int i = 0; i < bevetel.Length; i++)
+        {
+            Console.Write("\t{0} nap: ", i+1);
+            int.TryParse(Console.ReadLine(), out bevetel[i]);
+        }
+
+        // Feldolgozás
+        int db = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if ((i == 0 && bevetel[i] > 0) || (i > 0 && bevetel[i] > bevetel[i - 1]))
+            {
+                db++;
+            }
+        }
+        
+        // Kiírás
+        Console.WriteLine("A kereskedő {0} napon adott el állatot.", db);
+    }
+}
