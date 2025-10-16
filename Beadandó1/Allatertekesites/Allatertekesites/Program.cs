@@ -10,7 +10,7 @@ class Program
         // Bekérés
         int n;
 
-        Console.Write("Napok száma: ");
+        Console.Write("Napok száma: "); 
         int.TryParse(Console.ReadLine(),  out n);
 
         int[] bevetel = new int[n];
@@ -18,7 +18,7 @@ class Program
         Console.WriteLine("Bevételek: ");
         for (int i = 0; i < bevetel.Length; i++)
         {
-            Console.Write("\t{0} nap: ", i+1);
+            Console.Write($"\t{i+1} nap: ");
             int.TryParse(Console.ReadLine(), out bevetel[i]);
         }
 
@@ -33,6 +33,6 @@ class Program
         }
         
         // Kiírás
-        Console.WriteLine("A kereskedő {0} napon adott el állatot.", db);
+        Console.WriteLine($"A kereskedő {db} napon adott el állatot.");
     }
 }
