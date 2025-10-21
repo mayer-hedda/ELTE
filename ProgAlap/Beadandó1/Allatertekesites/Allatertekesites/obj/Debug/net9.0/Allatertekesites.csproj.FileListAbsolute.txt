@@ -1,0 +1,15 @@
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/bin/Debug/net9.0/Allatertekesites
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/bin/Debug/net9.0/Allatertekesites.deps.json
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/bin/Debug/net9.0/Allatertekesites.runtimeconfig.json
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/bin/Debug/net9.0/Allatertekesites.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/bin/Debug/net9.0/Allatertekesites.pdb
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/obj/Debug/net9.0/Allatertekesites.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/obj/Debug/net9.0/Allatertekesites.AssemblyInfoInputs.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/obj/Debug/net9.0/Allatertekesites.AssemblyInfo.cs
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/obj/Debug/net9.0/Allatertekesites.csproj.CoreCompileInputs.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/obj/Debug/net9.0/Allatertekesites.sourcelink.json
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/obj/Debug/net9.0/Allatertekesites.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/obj/Debug/net9.0/refint/Allatertekesites.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/obj/Debug/net9.0/Allatertekesites.pdb
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/obj/Debug/net9.0/Allatertekesites.genruntimeconfig.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/Beadandó1/Allatertekesites/Allatertekesites/obj/Debug/net9.0/ref/Allatertekesites.dll
