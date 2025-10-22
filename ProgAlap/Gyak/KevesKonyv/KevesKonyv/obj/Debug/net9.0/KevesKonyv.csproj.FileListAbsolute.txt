@@ -1,0 +1,15 @@
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/bin/Debug/net9.0/KevesKonyv
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/bin/Debug/net9.0/KevesKonyv.deps.json
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/bin/Debug/net9.0/KevesKonyv.runtimeconfig.json
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/bin/Debug/net9.0/KevesKonyv.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/bin/Debug/net9.0/KevesKonyv.pdb
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/obj/Debug/net9.0/KevesKonyv.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/obj/Debug/net9.0/KevesKonyv.AssemblyInfoInputs.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/obj/Debug/net9.0/KevesKonyv.AssemblyInfo.cs
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/obj/Debug/net9.0/KevesKonyv.csproj.CoreCompileInputs.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/obj/Debug/net9.0/KevesKonyv.sourcelink.json
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/obj/Debug/net9.0/KevesKonyv.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/obj/Debug/net9.0/refint/KevesKonyv.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/obj/Debug/net9.0/KevesKonyv.pdb
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/obj/Debug/net9.0/KevesKonyv.genruntimeconfig.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/KevesKonyv/KevesKonyv/obj/Debug/net9.0/ref/KevesKonyv.dll

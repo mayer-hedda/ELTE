@@ -1,0 +1,15 @@
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/bin/Debug/net9.0/ANapAmikorNemVoltKapas
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/bin/Debug/net9.0/ANapAmikorNemVoltKapas.deps.json
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/bin/Debug/net9.0/ANapAmikorNemVoltKapas.runtimeconfig.json
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/bin/Debug/net9.0/ANapAmikorNemVoltKapas.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/bin/Debug/net9.0/ANapAmikorNemVoltKapas.pdb
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/obj/Debug/net9.0/ANapAmikorNemVoltKapas.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/obj/Debug/net9.0/ANapAmikorNemVoltKapas.AssemblyInfoInputs.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/obj/Debug/net9.0/ANapAmikorNemVoltKapas.AssemblyInfo.cs
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/obj/Debug/net9.0/ANapAmikorNemVoltKapas.csproj.CoreCompileInputs.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/obj/Debug/net9.0/ANapAmikorNemVoltKapas.sourcelink.json
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/obj/Debug/net9.0/ANapAmikorNemVoltKapas.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/obj/Debug/net9.0/refint/ANapAmikorNemVoltKapas.dll
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/obj/Debug/net9.0/ANapAmikorNemVoltKapas.pdb
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/obj/Debug/net9.0/ANapAmikorNemVoltKapas.genruntimeconfig.cache
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Gyak/ANapAmikorNemVoltKapas/ANapAmikorNemVoltKapas/obj/Debug/net9.0/ref/ANapAmikorNemVoltKapas.dll
