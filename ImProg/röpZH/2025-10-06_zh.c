@@ -1,7 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+
 #define count 10
+
+
 int main()
 {
     for (size_t i = 0; i < count; i++)
