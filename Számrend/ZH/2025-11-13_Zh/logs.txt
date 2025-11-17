@@ -1,0 +1,35 @@
+[Server] 2025.11.13 10:48:07 | mayerhedda | Szerver indítása...
+[Server] 2025.11.13 10:50:51 | mayerhedda | Szerver indítása...
+[Info] 2025.11.13 10:51:04 | mayerhedda | A szerver már fut.
+[Server] 2025.11.13 10:51:12 | mayerhedda | Szerver leállítása...
+[Info] 2025.11.13 10:51:17 | mayerhedda | A szerver nem fut.
+[Server] 2025.11.13 10:57:01 | mayerhedda | Szerver indítása...
+[Info] 2025.11.13 10:57:04 | mayerhedda | A szerver már fut.
+[Server] 2025.11.13 10:57:08 | mayerhedda | Szerver leállítása...
+[Info] 2025.11.13 10:57:11 | mayerhedda | A szerver nem fut.
+[Info] 2025.11.13 10:57:19 | mayerhedda | A szerver nem fut.
+[Server] 2025.11.13 10:57:23 | mayerhedda | Szerver indítása...
+[Server] 2025.11.13 10:57:28 | mayerhedda | A szerver újraindul...
+[Info] 2025.11.13 10:57:33 | mayerhedda | A szerver fut.
+[Server] 2025.11.13 10:57:36 | mayerhedda | Szerver leállítása...
+[Info] 2025.11.13 10:57:39 | mayerhedda | A szerver nem fut.
+[Error] 2025.11.13 11:10:17 | mayerhedda | Hiányzó felhasználónév.
+[Info] 2025.11.13 11:10:26 | mayerhedda | METALLICA_FAN már tiltva van.
+[Server] 2025.11.13 11:10:44 | mayerhedda | Hell_enjoyer kitiltva.
+[Server] 2025.11.13 11:11:22 | mayerhedda | Hell_enjoyer kitiltva.
+[Server] 2025.11.13 11:13:46 | mayerhedda | alma kitiltva.
+[Server] 2025.11.13 11:14:23 | mayerhedda | asd kitiltva.
+[Server] 2025.11.13 11:14:37 | mayerhedda | alma kitiltva.
+[Server] 2025.11.13 11:15:39 | mayerhedda | aasdasd kitiltva.
+[Server] 2025.11.13 11:16:24 | mayerhedda | asd kitiltva.
+[Server] 2025.11.13 11:19:16 | mayerhedda | asdasdasfasfa kitiltva.
+[Server] 2025.11.13 11:20:00 | mayerhedda | jkjkl kitiltva.
+[Server] 2025.11.13 11:20:26 | mayerhedda | Hell_Enjoyer kitiltva.
+[Server] 2025.11.13 11:22:27 | mayerhedda | jklhjgkléfdhjgé kitiltva.
+[Server] 2025.11.13 11:24:38 | mayerhedda | cdbsjafvhsdk kitiltva.
+[Server] 2025.11.13 11:25:00 | mayerhedda | Hel_Enjoyer kitiltva.
+[Server] 2025.11.13 11:29:00 | mayerhedda | Hell_Enjoyer kitiltva.
+[Info] 2025.11.13 11:29:23 | mayerhedda | Hell_Enjoyer már tiltva van.
+[Info] 2025.11.13 11:32:49 | mayerhedda | Hell_Enjoyer már tiltva van:
+[Info] 2025.11.13 11:33:48 | mayerhedda | Hell_Enjoyer már tiltva van:
+\033[0;32m[Info]\033[0m 2025.11.13 11:43:23 | mayerhedda | A szerver nem fut.

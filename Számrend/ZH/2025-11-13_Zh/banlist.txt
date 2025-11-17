@@ -1,0 +1,6 @@
+Dátum      | ok         | név            | lakcím                        | Ip cím
+2015.05.02 | Csúnya szó | xXx_playar_xXx |                               | 192.0.2.0
+2024.01.04 | lopott vas | sZofT_feJl_67  | 47°56'09.8"N 21°34'48.5"E     | 198.51.100.0/24
+2025.12.12 | hazudott   | METALLICA_FAN  | 4432 Nyíregyháza Csernyikbokor|
+2025.11.13 | manuális   | Hel_Enjoyer | otthon  | 127.0.0.1
+2025.11.13 | manuális   | Hell_Enjoyer | otthon  | 127.0.0.1
