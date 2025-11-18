@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProbaZh")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c34f68cc5f3dd6bcdaf7625cb9d9e4444e24b7f4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b049ee12082ebdd10d755b08b18080d61dae9c2c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProbaZh")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProbaZh")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
