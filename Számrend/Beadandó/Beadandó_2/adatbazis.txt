@@ -1,0 +1,4 @@
+Nagy Anna;1111 Budapest, Fő utca 1.;december 6. 14:00
+Kiss Péter;2222 Székesfehérvár, Tavi köz 5.;december 6. 14:30
+Kovács Éva;3333 Debrecen, Almafa sor 12.;december 6. 15:00
+Szabó Gergő;4444 Miskolc, Hősök tere 1.;december 6. 16:00

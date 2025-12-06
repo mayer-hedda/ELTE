@@ -1,0 +1,12 @@
+Kedves <nev>!
+
+Szeretettel meghívunk a dorogi Mikulás-napi ünnepségre.
+A Mikulás már nagyon várja, hogy találkozzon veled!
+
+Helyszín: <cim>
+A te személyes időpontod a Mikulással: <idopont>
+
+Sok szeretettel várunk!
+
+Üdvözlettel,
+A Mikulás segítői
