@@ -1,0 +1,2 @@
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Beadandó/Komplex-Beadandó_Nagy-változású-települések/NagyValtozasuTelepulesek/NagyValtozasuTelepulesek/bin/Release/net9.0/win-x64/publish/NagyValtozasuTelepulesek.pdb
+/Users/mayerhedda/Documents/GitHub/ELTE/ProgAlap/Beadandó/Komplex-Beadandó_Nagy-változású-települések/NagyValtozasuTelepulesek/NagyValtozasuTelepulesek/bin/Release/net9.0/win-x64/publish/NagyValtozasuTelepulesek.exe
