@@ -1,0 +1,4 @@
+D:\ELTE\4.félév\_OEP_GYAK\guide\01-05. gyakorlat\02\Circle_Point_Skeleton\Circle_Point_Skeleton\obj\Debug\net8.0\Circle_Point_Skeleton.GeneratedMSBuildEditorConfig.editorconfig
+D:\ELTE\4.félév\_OEP_GYAK\guide\01-05. gyakorlat\02\Circle_Point_Skeleton\Circle_Point_Skeleton\obj\Debug\net8.0\Circle_Point_Skeleton.AssemblyInfoInputs.cache
+D:\ELTE\4.félév\_OEP_GYAK\guide\01-05. gyakorlat\02\Circle_Point_Skeleton\Circle_Point_Skeleton\obj\Debug\net8.0\Circle_Point_Skeleton.AssemblyInfo.cs
+D:\ELTE\4.félév\_OEP_GYAK\guide\01-05. gyakorlat\02\Circle_Point_Skeleton\Circle_Point_Skeleton\obj\Debug\net8.0\Circle_Point_Skeleton.csproj.CoreCompileInputs.cache
