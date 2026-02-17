@@ -30,5 +30,12 @@ int main()
 
     printf("Avg of 5 and 6: %.2f\n", (5 + 6) / 2.);     // Átlag számítása: osztásnál float típus használata a pontos eredményért
 
+
+
+    for (float i = 0.0; i <= 1.0; i += 0.1)     // For ciklus: float típusú változó használata
+    {
+        printf("%f, ", i);
+    }
+
     return 0;
 }
