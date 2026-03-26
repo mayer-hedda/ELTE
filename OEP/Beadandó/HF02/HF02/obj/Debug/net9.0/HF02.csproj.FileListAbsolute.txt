@@ -1,0 +1,14 @@
+/Users/mayerhedda/Downloads/HF02/HF02/bin/Debug/net9.0/HF02
+/Users/mayerhedda/Downloads/HF02/HF02/bin/Debug/net9.0/HF02.deps.json
+/Users/mayerhedda/Downloads/HF02/HF02/bin/Debug/net9.0/HF02.runtimeconfig.json
+/Users/mayerhedda/Downloads/HF02/HF02/bin/Debug/net9.0/HF02.dll
+/Users/mayerhedda/Downloads/HF02/HF02/bin/Debug/net9.0/HF02.pdb
+/Users/mayerhedda/Downloads/HF02/HF02/obj/Debug/net9.0/HF02.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mayerhedda/Downloads/HF02/HF02/obj/Debug/net9.0/HF02.AssemblyInfoInputs.cache
+/Users/mayerhedda/Downloads/HF02/HF02/obj/Debug/net9.0/HF02.AssemblyInfo.cs
+/Users/mayerhedda/Downloads/HF02/HF02/obj/Debug/net9.0/HF02.csproj.CoreCompileInputs.cache
+/Users/mayerhedda/Downloads/HF02/HF02/obj/Debug/net9.0/HF02.dll
+/Users/mayerhedda/Downloads/HF02/HF02/obj/Debug/net9.0/refint/HF02.dll
+/Users/mayerhedda/Downloads/HF02/HF02/obj/Debug/net9.0/HF02.pdb
+/Users/mayerhedda/Downloads/HF02/HF02/obj/Debug/net9.0/HF02.genruntimeconfig.cache
+/Users/mayerhedda/Downloads/HF02/HF02/obj/Debug/net9.0/ref/HF02.dll
