@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details - RecipeWorld</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" media="screen">
+    <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">RecipeWorld</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#recipeMenu" aria-controls="recipeMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="recipeMenu">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="recipes.html">Recipes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                            <button id="contrast-toggle" class="btn btn-outline-warning btn-sm">
+                                Contrast Mode
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6">
+                <h1 id="recipe-name" class="display-4 fw-bold mb-3">Select a Recipe</h1>
+                <p class="lead text-muted" id="recipe-desc">Delicious flavors from around the world.</p>
+            </div>
+            <div class="col-lg-6">
+                <img id="recipe-img" src="pics/placeholder.jpg" class="img-fluid shadow" alt="Recipe loading">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5">
+                <h2>Ingredients</h2>
+                <details class="mb-4" open>
+                    <summary class="btn btn-outline-secondary btn-sm mb-2">Show/Hide Ingredients</summary>
+                    <div class="table-responsive">
+                        <table class="table border" id="ingredients-table">
+                            <caption class="visually-hidden">List of ingredients and amounts</caption>
+                            <thead class="table-light">
+                                <tr><th>Ingredient</th><th>Amount</th></tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h2>Preparation</h2>
+                        <ol id="prep-steps" class="list-group list-group-numbered mb-5"></ol>
+                    </div>
+                    <aside class="col-lg-4">
+                        <div class="p-4 mb-3 bg-light rounded shadow-sm border-start border-4 border-warning">
+                            <h3 class="h5 fst-italic">Chef's Tip</h3>
+                            <p class="mb-0 small">Always use fresh ingredients for the best results. Season with salt and pepper at each step to build flavor layers!</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2026 RecipeWorld</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" title="Go to top">&#8593;</button>
+
+
+    <script src="recipes.js"></script>
+    <script>
+        function loadRecipe() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+
+            if (!id || !recipes[id]) {
+                document.getElementById('recipe-name').innerText = "Recipe not found!";
+                return;
+            }
+
+            const data = recipes[id];
+            document.getElementById('recipe-name').innerText = data.name;
+            document.getElementById('recipe-desc').innerText = data.desc;
+            
+            const img = document.getElementById('recipe-img');
+            img.src = data.img;
+            img.alt = data.name;
+
+            const tbody = document.querySelector('#ingredients-table tbody');
+            tbody.innerHTML = "";
+            data.ingredients.forEach(item => {
+                tbody.innerHTML += `<tr><td>${item[0]}</td><td>${item[1]}</td></tr>`;
+            });
+
+            const stepsList = document.getElementById('prep-steps');
+            stepsList.innerHTML = "";
+            data.steps.forEach(step => {
+                stepsList.innerHTML += `<li class="list-group-item border-0 border-bottom">${step}</li>`;
+            });
+        }
+
+        window.onload = loadRecipe;
+        document.getElementById('contrast-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('accessibility-mode');
+        });
+
+        const topBtn = document.getElementById("backToTop");
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+        }
+
+        topBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' 
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

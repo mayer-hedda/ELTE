@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & About - RecipeWorld</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" media="screen">
+    <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">RecipeWorld</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#recipeMenu" aria-controls="recipeMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="recipeMenu">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="recipes.html">Recipes</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                            <button id="contrast-toggle" class="btn btn-outline-warning btn-sm">
+                                Contrast Mode
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <div class="row align-items-center mb-5">
+            <div class="col-md-7">
+                <h1 class="display-5 fw-bold mb-4">About Us</h1>
+                <p class="lead">RecipeWorld is a website dedicated to sharing easy and delicious recipes with everyone.</p>
+                <p>Our mission is to inspire people to cook more at home and discover new flavors from around the world. We collect recipes from different cultures and present them in a simple and easy-to-follow way.</p>
+                
+                <div class="mt-4 p-3 bg-light border-start border-4 border-primary">
+                    <h2>Contact Information</h2>
+                    <ul class="list-unstyled mb-0">
+                        <li><strong>Email:</strong> contact@recipeworld.com</li>
+                        <li><strong>Phone:</strong><span lang="hu"> +36 30 123 4567</span></li>
+                        <li><strong>Address:</strong> 12 Recipe Street, Budapest 1051</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-5 mt-4 mt-md-0 text-center">
+                <figure class="figure shadow p-2 bg-white rounded">
+                    <img src="pics/contact.jpg" class="figure-img img-fluid rounded" alt="A person cooking in a modern kitchen">
+                    <figcaption class="figure-caption text-center">Cooking is passion.</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0 h5">Send us a message</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <form action="#" method="post">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="contactName" class="form-label">Name</label>
+                                    <input type="text" id="contactName" class="form-control" placeholder="Your Name" required maxlength="50">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="contactEmail" class="form-label">Email</label>
+                                    <input type="email" id="contactEmail" class="form-control" placeholder="email@example.com" required maxlength="100">
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="contactSubject" class="form-label">Subject</label>
+                                    <input type="text" id="contactSubject" class="form-control" placeholder="What is this about?" required maxlength="100">
+                                </div>
+
+                                <div class="col-12 my-2">
+                                    <label class="form-label d-block">What is your inquiry about?</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inquiryType" id="inquiryGeneral" value="general" checked>
+                                        <label class="form-check-label" for="inquiryGeneral">General Question</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inquiryType" id="inquiryRecipe" value="recipe">
+                                        <label class="form-check-label" for="inquiryRecipe">Recipe Suggestion</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="contactMessage" class="form-label">Message</label>
+                                    <textarea id="contactMessage" class="form-control" rows="5" placeholder="How can we help you?" required maxlength="1000"></textarea>
+                                </div>
+
+                                <div class="col-12 my-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="newsletter" value="yes">
+                                        <label class="form-check-label" for="newsletter">
+                                            Subscribe to our weekly newsletter
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 text-end">
+                                    <button type="submit" class="btn btn-primary px-5">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2026 RecipeWorld | Built with Bootstrap</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" title="Go to top">&#8593;</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('contrast-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('accessibility-mode');
+        });
+
+        const topBtn = document.getElementById("backToTop");
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+        }
+
+        topBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' 
+            });
+        });
+    </script>
+</body>
+</html>

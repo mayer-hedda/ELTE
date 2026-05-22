@@ -1,0 +1,46 @@
+header, 
+footer, 
+nav, 
+.navbar, 
+.btn, 
+form, 
+aside, 
+.carousel-control-prev, 
+.carousel-control-next, 
+video, 
+.ratio { 
+    display: none !important; 
+}
+
+body { 
+    font-size: 11pt; 
+    line-height: 1.3; 
+    background: white !important; 
+    color: black !important;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 250px !important; /* Kicsinyített méret nyomtatáshoz */
+    height: auto !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: block;
+    margin: 10px 0;
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd !important;
+    padding: 8px;
+}
+
+a {
+    color: black !important;
+    text-decoration: underline !important;
+}

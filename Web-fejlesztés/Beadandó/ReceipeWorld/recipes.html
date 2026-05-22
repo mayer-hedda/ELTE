@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes - RecipeWorld</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" media="screen">
+    <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">RecipeWorld</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#recipeMenu" aria-controls="recipeMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="recipeMenu">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="recipes.html">Recipes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                            <button id="contrast-toggle" class="btn btn-outline-warning btn-sm">
+                                Contrast Mode
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <h1 class="mb-4 text-center">Our Recipes</h1>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 shadow-sm border-0">
+                    <a href="pics/carbonara.jpg"><img src="pics/carbonara.jpg" class="card-img-top" alt="Spaghetti Carbonara"></a>
+                    <div class="card-body">
+                        <h2 class="card-title fw-bold h5">Spaghetti Carbonara</h2>
+                        <p class="card-text text-muted">A classic Italian pasta dish made with eggs, cheese, pancetta and black pepper.</p>
+                        <a href="recipe-details.html?id=carbonara" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 shadow-sm border-0">
+                    <a href="pics/curry.jpg"><img src="pics/curry.jpg" class="card-img-top" alt="Curry Chicken"></a>
+                    <div class="card-body">
+                        <h2 class="card-title fw-bold h5">Curry Chicken</h2>
+                        <p class="card-text text-muted">A flavorful chicken curry made with aromatic spices and coconut milk.</p>
+                        <a href="recipe-details.html?id=curry" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 shadow-sm border-0">
+                    <a href="pics/caesar.jpg"><img src="pics/caesar.jpg" class="card-img-top" alt="Caesar Salad"></a>
+                    <div class="card-body">
+                        <h2 class="card-title fw-bold h5">Caesar Salad</h2>
+                        <p class="card-text text-muted">A fresh and crunchy salad with romaine lettuce, croutons, and creamy dressing.</p>
+                        <a href="recipe-details.html?id=caesar" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 shadow-sm border-0">
+                    <a href="pics/guacamole.jpeg"><img src="pics/guacamole.jpeg" class="card-img-top" alt="Guacamole"></a>
+                    <div class="card-body">
+                        <h2 class="card-title fw-bold h5">Authentic Guacamole</h2>
+                        <p class="card-text text-muted">A creamy Mexican dip made with ripe avocados, lime, and fresh cilantro.</p>
+                        <a href="recipe-details.html?id=guacamole" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 shadow-sm border-0">
+                    <a href="pics/beef-stew.jpg"><img src="pics/beef-stew.jpg" class="card-img-top" alt="Beef Stew"></a>
+                    <div class="card-body">
+                        <h2 class="card-title fw-bold h5">Classic Beef Stew</h2>
+                        <p class="card-text text-muted">A hearty and warming stew with tender beef, potatoes, and carrots.</p>
+                        <a href="recipe-details.html?id=beef-stew" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 shadow-sm border-0">
+                    <a href="pics/pancakes.jpg"><img src="pics/pancakes.jpg" class="card-img-top" alt="Pancakes"></a>
+                    <div class="card-body">
+                        <h2 class="card-title fw-bold h5">Fluffy American Pancakes</h2>
+                        <p class="card-text text-muted">Classic thick and soft pancakes, perfect for breakfast with maple syrup.</p>
+                        <a href="recipe-details.html?id=pancakes" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 shadow-sm border-0">
+                    <a href="pics/margarita.jpg"><img src="pics/margarita.jpg" class="card-img-top" alt="Pizza Margherita"></a>
+                    <div class="card-body">
+                        <h2 class="card-title fw-bold h5">Pizza Margherita</h2>
+                        <p class="card-text text-muted">The queen of Italian pizzas with tomato sauce, fresh mozzarella, and basil.</p>
+                        <a href="recipe-details.html?id=margarita" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 shadow-sm border-0">
+                    <a href="pics/ratatouille.jpg"><img src="pics/ratatouille.jpg" class="card-img-top" alt="Ratatouille"></a>
+                    <div class="card-body">
+                        <h2 class="card-title fw-bold h5">French Ratatouille</h2>
+                        <p class="card-text text-muted">A colorful vegetable stew from Provence with eggplant, zucchini, and peppers.</p>
+                        <a href="recipe-details.html?id=ratatouille" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 shadow-sm border-0">
+                    <a href="pics/shrimp-scampi.jpg"><img src="pics/shrimp-scampi.jpg" class="card-img-top" alt="Shrimp Scampi"></a>
+                    <div class="card-body">
+                        <h2 class="card-title fw-bold h5">Garlic Shrimp Scampi</h2>
+                        <p class="card-text text-muted">Delicious shrimp cooked in a buttery garlic and white wine sauce.</p>
+                        <a href="recipe-details.html?id=shrimp-scampi" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <article class="card h-100 shadow-sm border-0">
+                    <a href="pics/apple-pie.jpg"><img src="pics/apple-pie.jpg" class="card-img-top" alt="Apple Pie"></a>
+                    <div class="card-body">
+                        <h2 class="card-title fw-bold h5">Classic Apple Pie</h2>
+                        <p class="card-text text-muted">Traditional dessert with a buttery crust and spiced apple filling.</p>
+                        <a href="recipe-details.html?id=apple-pie" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2026 RecipeWorld</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" title="Go to top">&#8593;</button>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('contrast-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('accessibility-mode');
+        });
+
+        const topBtn = document.getElementById("backToTop");
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                topBtn.style.display = "block";
+            } else {
+                topBtn.style.display = "none";
+            }
+        }
+
+        topBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' 
+            });
+        });
+    </script>
+</body>
+</html>

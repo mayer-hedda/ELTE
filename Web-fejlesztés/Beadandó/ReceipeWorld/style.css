@@ -1,0 +1,140 @@
+body {
+    line-height: 1.6;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+a { 
+    text-decoration: underline; 
+    color: #0d6efd; 
+}
+
+a:visited { 
+    color: #6c757d; 
+}
+
+a:hover { 
+    text-decoration: none; 
+    color: #0a58ca; 
+}
+
+.navbar a, .btn, .card-title a, .navbar a:visited, .card-title a:visited { 
+    text-decoration: none;
+    color: inherit; 
+}
+.navbar {
+    color: #6c757d;
+}
+
+.table-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 350px; 
+    object-fit: cover;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('pics/carbonara.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Ez ad egy finom görgetési effektet */
+    min-height: 70vh; /* A képernyő magasságának 70%-át foglalja el */
+    border-bottom: none;
+}
+
+.hero-section .btn-warning {
+    background-color: #ffc107;
+    border: none;
+    color: #212529;
+    font-weight: bold;
+}
+
+#recipe-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.welcome-text {
+    max-width: 800px;
+}
+
+
+.accessibility-mode {
+    background-color: #000 !important;
+    color: #ffff00 !important; 
+    font-size: 1.5rem !important; 
+    text-transform: uppercase !important; 
+}
+
+.accessibility-mode a {
+    color: #ffff00 !important;
+    text-decoration: underline yellow 3px !important;
+}
+
+.accessibility-mode .card, .accessibility-mode .navbar {
+    background-color: #000 !important;
+    border: 2px solid #ffff00 !important;
+}
+
+.btn-primary {
+    color: #fff !important;
+}
+
+.btn-primary:visited {
+    color: #fff !important;
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+}
+
+.accessibility-mode .btn:visited {
+    color: #ffff00 !important;
+    background-color: #000 !important;
+    border-color: #ffff00 !important;
+}
+
+#backToTop {
+    display: none; 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 99; 
+    border: none;
+    outline: none;
+    background-color: #ffc107; 
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%; 
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+#backToTop:hover {
+    background-color: #e0a800; 
+}
+
+.accessibility-mode #backToTop {
+    background-color: #ffff00 !important;
+    color: #000 !important;
+    border: 2px solid #000 !important;
+}
