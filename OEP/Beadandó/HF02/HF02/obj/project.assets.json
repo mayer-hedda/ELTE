@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mayerhedda/Downloads/HF02/HF02/HF02.csproj",
+      "projectUniqueName": "/Users/mayerhedda/Documents/GitHub/ELTE/OEP/Beadandó/HF02/HF02/HF02.csproj",
       "projectName": "HF02",
-      "projectPath": "/Users/mayerhedda/Downloads/HF02/HF02/HF02.csproj",
+      "projectPath": "/Users/mayerhedda/Documents/GitHub/ELTE/OEP/Beadandó/HF02/HF02/HF02.csproj",
       "packagesPath": "/Users/mayerhedda/.nuget/packages/",
-      "outputPath": "/Users/mayerhedda/Downloads/HF02/HF02/obj/",
+      "outputPath": "/Users/mayerhedda/Documents/GitHub/ELTE/OEP/Beadandó/HF02/HF02/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/mayerhedda/.nuget/NuGet/NuGet.Config"

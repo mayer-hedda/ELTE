@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mayerhedda/Downloads/HF04/HF04/HF04.csproj": {}
+    "/Users/mayerhedda/Documents/GitHub/ELTE/OEP/Beadandó/HF04/HF04/HF04.csproj": {}
   },
   "projects": {
-    "/Users/mayerhedda/Downloads/HF04/HF04/HF04.csproj": {
+    "/Users/mayerhedda/Documents/GitHub/ELTE/OEP/Beadandó/HF04/HF04/HF04.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mayerhedda/Downloads/HF04/HF04/HF04.csproj",
+        "projectUniqueName": "/Users/mayerhedda/Documents/GitHub/ELTE/OEP/Beadandó/HF04/HF04/HF04.csproj",
         "projectName": "HF04",
-        "projectPath": "/Users/mayerhedda/Downloads/HF04/HF04/HF04.csproj",
+        "projectPath": "/Users/mayerhedda/Documents/GitHub/ELTE/OEP/Beadandó/HF04/HF04/HF04.csproj",
         "packagesPath": "/Users/mayerhedda/.nuget/packages/",
-        "outputPath": "/Users/mayerhedda/Downloads/HF04/HF04/obj/",
+        "outputPath": "/Users/mayerhedda/Documents/GitHub/ELTE/OEP/Beadandó/HF04/HF04/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/mayerhedda/.nuget/NuGet/NuGet.Config"
