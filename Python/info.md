@@ -1,0 +1,3 @@
+- Tanár: Marci
+- gyakorlati beadandó TMS-ben
+- 
