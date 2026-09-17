@@ -1,3 +1,5 @@
+12:15 - 13:45
+
 ## Követelmények:
 
 - 2 csoport zh
@@ -5,6 +7,5 @@
 - házik (1p - 10p)
 - 10 plusz pont (plusz feladat, vagy bármi)
 - teams: 1hrpxd
-
 
 yield
