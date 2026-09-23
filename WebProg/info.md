@@ -2,5 +2,4 @@
 
 **Elérhetőség:** vimtaai@inf.elte.hu
 
-[GitHub](https://github.com/vimtaai/elte)
-
+[GitHub](https://github.com/vimtaai/elte/tree/master/2026-27-1/wp-14)
