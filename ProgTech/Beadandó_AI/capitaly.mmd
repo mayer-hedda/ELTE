@@ -1,0 +1,135 @@
+classDiagram
+    direction TB
+
+    class Main {
+        +main(String[])$ void
+    }
+
+    class Reader {
+        +readGame(String)$ GameData
+        +readDice(String)$ Queue~Integer~
+        -parseTile(String)$ Tile
+        -parsePlayer(String)$ Player
+    }
+
+    class GameData {
+        +List~Tile~ tiles
+        +List~Player~ players
+    }
+
+    class Game {
+        -Board board
+        -Dice dice
+        -List~Player~ players
+        +run() Player
+        -playRound() void
+        -takeTurn(Player) void
+        -isOver() boolean
+        +getWinner() Player
+    }
+
+    class Board {
+        -List~Tile~ tiles
+        +size() int
+        +getTile(int) Tile
+        +nextPosition(int, int) int
+    }
+
+    class Dice {
+        <<interface>>
+        +roll() int
+    }
+
+    class RandomDice {
+        -Random random
+        +roll() int
+    }
+
+    class ScriptedDice {
+        -Queue~Integer~ rolls
+        +roll() int
+    }
+
+    class Player {
+        <<abstract>>
+        #String name
+        #int money = 10000
+        #int position
+        #boolean active
+        #List~Property~ properties
+        +moveTo(int) void
+        +receive(int) void
+        +pay(int) boolean
+        +payTo(Player, int) boolean
+        +canAfford(int) boolean
+        +addProperty(Property) void
+        +goBankrupt() void
+        +startRound() void
+        +tryToBuy(int) boolean
+        #wantsToBuy(int)* boolean
+        +toString() String
+    }
+
+    class Greedy {
+        #wantsToBuy(int) boolean
+    }
+
+    class Careful {
+        -int budget
+        +startRound() void
+        #wantsToBuy(int) boolean
+    }
+
+    class Tactical {
+        -boolean skipNext
+        #wantsToBuy(int) boolean
+    }
+
+    class Tile {
+        <<abstract>>
+        +onStep(Player)* void
+    }
+
+    class Property {
+        +int BUY_COST = 1000$
+        +int BUILD_COST = 4000$
+        +int RENT = 500$
+        +int RENT_WITH_HOUSE = 2000$
+        -Player owner
+        -boolean hasHouse
+        +onStep(Player) void
+        -getRent() int
+        +release() void
+    }
+
+    class Service {
+        -int fee
+        +onStep(Player) void
+    }
+
+    class Lucky {
+        -int reward
+        +onStep(Player) void
+    }
+
+    Player <|-- Greedy
+    Player <|-- Careful
+    Player <|-- Tactical
+    Tile <|-- Property
+    Tile <|-- Service
+    Tile <|-- Lucky
+    Dice <|.. RandomDice
+    Dice <|.. ScriptedDice
+
+    Game *-- Board
+    Game o-- Dice
+    Game o-- "*" Player : players
+    Board *-- "1..*" Tile : tiles
+    Property --> "0..1" Player : owner
+    Player o-- "*" Property : owns
+
+    Main ..> Reader
+    Main ..> Game
+    Reader ..> GameData : creates
+    GameData --> "*" Tile
+    GameData --> "*" Player
