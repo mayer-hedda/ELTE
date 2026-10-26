@@ -1,0 +1,11 @@
+6
+Property
+Service 800
+Property
+Lucky 1500
+Property
+Service 2000
+3
+Peti Greedy
+Anna Careful
+Bela Tactical
