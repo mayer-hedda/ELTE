@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Gyakorló 1 – Filmfesztivál (task-1 típus)</title>
+<style>
+  body { font-family: sans-serif; max-width: 800px; margin: 2em auto; }
+  div[id^="task"] { border: 1px solid #ccc; padding: .3em .6em; margin: .3em 0 1em; min-height: 1.2em; }
+</style>
+</head>
+<body>
+<!--
+  FELADAT (a megoldás lent a <script>-ben – gyakorláshoz töröld ki és írd meg újra!)
+  A directors tömb: { name, country, films: [{ title, year, minutes, rating, genres[] }] }
+
+  a. #taskA  Van-e olyan rendező, akinek minden filmje 2000 után készült?
+  b. #taskB  Minden rendezőnek van-e legalább egy 8-as vagy jobb értékelésű filmje?
+  c. #taskC  Írd ki (vesszővel elválasztva) azon rendezők nevét, akiknek van 150 percnél hosszabb drámája!
+  d. #taskD  Hány film van összesen?
+  e. #taskE  Melyik rendező filmjeinek átlagos értékelése a legmagasabb? (holtverseny: az UTOLSÓ nyer)
+  f. #taskF  A "sci-fi" filmek átlagos hossza egy tizedesre.
+  g. #taskG  A 3 legjobb értékelésű film címe csökkenő sorrendben, <li>-ként a #taskG listába.
+  h. #taskH  Műfajonként a filmek száma "műfaj: db" formában, "; "-vel elválasztva, ábécérendben.
+  i. #taskI  Melyik országból van a legtöbb rendező?
+-->
+<p>a.</p><div id="taskA"></div>
+<p>b.</p><div id="taskB"></div>
+<p>c.</p><div id="taskC"></div>
+<p>d.</p><div id="taskD"></div>
+<p>e.</p><div id="taskE"></div>
+<p>f.</p><div id="taskF"></div>
+<p>g.</p><ul id="taskG"></ul>
+<p>h.</p><div id="taskH"></div>
+<p>i.</p><div id="taskI"></div>
+
+<script>
+const directors = [
+  { name: "Christopher Nolan", country: "UK", films: [
+    { title: "Inception", year: 2010, minutes: 148, rating: 8.8, genres: ["sci-fi", "akció"] },
+    { title: "Interstellar", year: 2014, minutes: 169, rating: 8.7, genres: ["sci-fi", "dráma"] },
+    { title: "Oppenheimer", year: 2023, minutes: 180, rating: 8.3, genres: ["dráma", "életrajzi"] },
+  ]},
+  { name: "Tarr Béla", country: "Magyarország", films: [
+    { title: "Sátántangó", year: 1994, minutes: 439, rating: 8.4, genres: ["dráma"] },
+    { title: "Werckmeister harmóniák", year: 2000, minutes: 145, rating: 7.9, genres: ["dráma"] },
+  ]},
+  { name: "Denis Villeneuve", country: "Kanada", films: [
+    { title: "Arrival", year: 2016, minutes: 116, rating: 7.9, genres: ["sci-fi", "dráma"] },
+    { title: "Dune", year: 2021, minutes: 155, rating: 8.0, genres: ["sci-fi", "kaland"] },
+  ]},
+  { name: "Ridley Scott", country: "UK", films: [
+    { title: "Alien", year: 1979, minutes: 117, rating: 8.5, genres: ["sci-fi", "horror"] },
+    { title: "Gladiator", year: 2000, minutes: 155, rating: 8.5, genres: ["akció", "dráma"] },
+  ]},
+];
+</script>
+
+<script>
+// ======================= MEGOLDÁS =======================
+const $ = sel => document.querySelector(sel);
+const allFilms = directors.flatMap(d => d.films);
+const avgRating = d => d.films.reduce((s, f) => s + f.rating, 0) / d.films.length;
+
+// a) some + every kombináció ("2000 után" = > 2000)
+$("#taskA").textContent = directors.some(d => d.films.every(f => f.year > 2000));
+
+// b) every + some
+$("#taskB").textContent = directors.every(d => d.films.some(f => f.rating >= 8));
+
+// c) filter + map + join
+$("#taskC").textContent = directors
+  .filter(d => d.films.some(f => f.minutes > 150 && f.genres.includes("dráma")))
+  .map(d => d.name)
+  .join(", ");
+
+// d) darabszám
+$("#taskD").textContent = allFilms.length;
+
+// e) max, UTOLSÓ nyer -> ">="
+let best = directors[0];
+for (const d of directors) if (avgRating(d) >= avgRating(best)) best = d;
+$("#taskE").textContent = best.name;
+
+// f) átlag, 1 tizedes, üres eset kezelése
+const scifi = allFilms.filter(f => f.genres.includes("sci-fi"));
+const avgLen = scifi.length ? scifi.reduce((s, f) => s + f.minutes, 0) / scifi.length : 0;
+$("#taskF").textContent = avgLen.toFixed(1);
+
+// g) rendezés másolaton + slice + li-k
+[...allFilms]
+  .sort((a, b) => b.rating - a.rating)
+  .slice(0, 3)
+  .forEach(f => {
+    const li = document.createElement("li");
+    li.textContent = f.title;
+    $("#taskG").appendChild(li);
+  });
+
+// h) csoportosítás objektumba, majd entries + sort + map + join
+const count = {};
+for (const f of allFilms) for (const g of f.genres) count[g] = (count[g] ?? 0) + 1;
+$("#taskH").textContent = Object.entries(count)
+  .sort((a, b) => a[0].localeCompare(b[0]))
+  .map(([g, n]) => `${g}: ${n}`)
+  .join("; ");
+
+// i) gyakoriság -> max
+const byCountry = {};
+for (const d of directors) byCountry[d.country] = (byCountry[d.country] ?? 0) + 1;
+const topCountry = Object.entries(byCountry).reduce((a, b) => (b[1] > a[1] ? b : a));
+$("#taskI").textContent = topCountry[0];
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Gyakorló 2 – Pizzarendelő (task-2 típus)</title>
+<style>
+  body { font-family: sans-serif; max-width: 700px; margin: 2em auto; }
+  #order { border: 3px solid #999; padding: 1em; }
+  #order.done { border-color: green; background: #eaffea; }
+  #order.error { border-color: crimson; }
+  #pizza { display: block; background: orange; border-radius: 50%; width: 100px; height: 100px; margin: 1em 0; }
+  #pizza.big { background: tomato; }
+  #topping-list li { cursor: pointer; }
+  #topping-list li:hover { text-decoration: line-through; }
+  .bar { display: inline-block; height: 20px; width: 10px; background: steelblue; margin-right: 3px; }
+</style>
+</head>
+<body>
+<!--
+  FELADAT (közvetlen eseménykezelőkkel; a megoldás lent)
+  a. #add-topping gombra / Enter-re (a #topping-form submit-ja) a #topping mezőből új li a #topping-list-be.
+     trim, üres és kis-nagybetű független duplikátum tiltva; siker után mező ürítése.
+  b. Legfeljebb 5 feltét: #topping-count mutatja a darabot, 5-nél a gomb disabled.
+  c. Egy li-re kattintva a feltét törlődjön (a számláló és a gomb állapota frissüljön)!
+  d. #size select change: #pizza mérete = option data-size px (width és height), 
+     ha a méret >= 140, kapja meg a "big" osztályt.
+  e. #qty csúszka input: #qty-value = érték, a #bars-ban annyi .bar span legyen.
+  f. #extra-cheese checkbox change: a #cheese-info szövege "Extra sajttal" / "Sajt nélkül".
+  g. #order-btn: ár = (méret alapár + feltétek * 200 + (sajt ? 300 : 0)) * db.
+     Alapár: #size kiválasztott option data-price. Ha nincs feltét: #msg = "Válassz feltétet!",
+     #order kapja az "error" osztályt. Ha ár > 20000: "Túl drága! (X Ft)" + error.
+     Egyébként "Rendelés leadva: X Ft", #order kapja a "done" osztályt (error le),
+     és minden vezérlő letiltva. X ezres tagolással (toLocaleString("hu-HU")).
+-->
+<div id="order">
+  <form id="topping-form">
+    <input id="topping" type="text" placeholder="Feltét">
+    <button id="add-topping" type="submit">Hozzáad</button>
+    (<span id="topping-count">0</span>/5)
+  </form>
+  <ul id="topping-list"></ul>
+
+  <select id="size">
+    <option value="s" data-size="80"  data-price="2000">Kicsi</option>
+    <option value="m" data-size="110" data-price="2800" selected>Közepes</option>
+    <option value="l" data-size="140" data-price="3600">Nagy</option>
+    <option value="xl" data-size="170" data-price="4500">Családi</option>
+  </select>
+  <span id="pizza" style="width:110px;height:110px"></span>
+
+  Darab: <input id="qty" type="range" min="1" max="8" value="1"> <span id="qty-value">1</span>
+  <div id="bars"><span class="bar"></span></div>
+
+  <label><input id="extra-cheese" type="checkbox"> Extra sajt</label>
+  <span id="cheese-info">Sajt nélkül</span>
+
+  <p><button id="order-btn" type="button">Rendelés</button></p>
+  <p id="msg"></p>
+</div>
+
+<script>
+// ======================= MEGOLDÁS =======================
+const toppingForm  = document.querySelector("#topping-form");
+const toppingInput = document.querySelector("#topping");
+const addBtn       = document.querySelector("#add-topping");
+const toppingCount = document.querySelector("#topping-count");
+const toppingList  = document.querySelector("#topping-list");
+const sizeSel      = document.querySelector("#size");
+const pizza        = document.querySelector("#pizza");
+const qty          = document.querySelector("#qty");
+const qtyValue     = document.querySelector("#qty-value");
+const bars         = document.querySelector("#bars");
+const cheese       = document.querySelector("#extra-cheese");
+const cheeseInfo   = document.querySelector("#cheese-info");
+const orderBtn     = document.querySelector("#order-btn");
+const msg          = document.querySelector("#msg");
+const order        = document.querySelector("#order");
+const MAX = 5;
+
+const items = () => [...toppingList.querySelectorAll("li")];
+
+function updateCount() {
+  toppingCount.textContent = items().length;
+  addBtn.disabled = items().length >= MAX;
+}
+
+// a) b) submit esemény: gombra ÉS Enterre is lefut
+toppingForm.addEventListener("submit", e => {
+  e.preventDefault();                                  // ne töltse újra az oldalt!
+  if (items().length >= MAX) return;
+  const text = toppingInput.value.trim();
+  if (!text) return;
+  if (items().some(li => li.textContent.toLowerCase() === text.toLowerCase())) return;
+
+  const li = document.createElement("li");
+  li.textContent = text;
+  // c) közvetlen kezelő az ÚJ elemre, létrehozáskor
+  li.addEventListener("click", () => {
+    if (orderBtn.disabled) return;                     // leadott rendelésnél ne
+    li.remove();
+    updateCount();
+  });
+  toppingList.appendChild(li);
+  toppingInput.value = "";
+  updateCount();
+});
+
+// d) select change + data-* + toggle
+sizeSel.addEventListener("change", () => {
+  const opt = sizeSel.selectedOptions[0];
+  const size = Number(opt.dataset.size);
+  pizza.style.width = size + "px";
+  pizza.style.height = size + "px";
+  pizza.classList.toggle("big", size >= 140);
+});
+
+// e) range input + elemek újragenerálása
+qty.addEventListener("input", () => {
+  const n = qty.valueAsNumber;                         // vagy Number(qty.value)
+  qtyValue.textContent = n;
+  bars.innerHTML = "";
+  for (let i = 0; i < n; i++) {
+    const span = document.createElement("span");
+    span.classList.add("bar");
+    bars.appendChild(span);
+  }
+});
+
+// f) checkbox change
+cheese.addEventListener("change", () => {
+  cheeseInfo.textContent = cheese.checked ? "Extra sajttal" : "Sajt nélkül";
+});
+
+// g) számolás + állapotok
+orderBtn.addEventListener("click", () => {
+  const n = items().length;
+  if (n === 0) {
+    msg.textContent = "Válassz feltétet!";
+    order.classList.add("error");
+    return;
+  }
+  const base = Number(sizeSel.selectedOptions[0].dataset.price);
+  const price = (base + n * 200 + (cheese.checked ? 300 : 0)) * qty.valueAsNumber;
+  const X = price.toLocaleString("hu-HU");             // "12 400"
+
+  if (price > 20000) {
+    msg.textContent = `Túl drága! (${X} Ft)`;
+    order.classList.add("error");
+    return;
+  }
+  msg.textContent = `Rendelés leadva: ${X} Ft`;
+  order.classList.remove("error");
+  order.classList.add("done");
+  [toppingInput, addBtn, sizeSel, qty, cheese, orderBtn].forEach(e => (e.disabled = true));
+});
+
+updateCount();
+</script>
+</body>
+</html>

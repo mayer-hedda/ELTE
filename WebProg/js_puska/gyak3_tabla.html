@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Gyakorló 3 – Kertész (task-3 típus)</title>
+<style>
+  body { font-family: sans-serif; max-width: 700px; margin: 2em auto; }
+  table { border-collapse: collapse; }
+  td { width: 50px; height: 50px; border: 1px solid #aaa; text-align: center; }
+  td.rock { background: #777; }
+  td.water { background: #9cf; }
+  td.planted { background: #9e9; }
+  td.lit { outline: 3px solid gold; outline-offset: -3px; }
+  td.player { background: salmon; }
+  td[data-plant]::after { content: attr(data-plant); font-size: 10px; }
+  button.seed.selected { background: gold; }
+</style>
+</head>
+<body>
+<!--
+  FELADAT (a kattintásokat DELEGÁLÁSSAL a #garden táblán / #seeds-en kezeld)
+  garden: { rows, cols, rocks:[{row,col}], water:{row,col}, seeds:["rózsa","tulipán",...] }
+
+  a. Generálj rows x cols táblát a #garden-be, cellákban data-row/data-col!
+  b. Kövek: "rock" osztály; víz: "water" osztály.
+  c. Minden maghoz egy "seed" osztályú gomb a #seeds div-be, szöveg = név, data-plant = név.
+  d. Magra kattintva kijelölés ("selected"), max 1, újrakattintás levesz (delegálás a #seeds-en).
+  e. Cellára kattintás: ha van kijelölt mag és a cella nem kő/víz/már beültetett,
+     kapja meg a "planted" osztályt és data-plant = mag neve; a mag gombja törlődjön.
+  f. Beültetett cellára kattintva a növény 4-szomszédai kapjanak/veszítsenek "lit" osztályt (toggle).
+  g. Ha minden mag elfogyott: #status = "Kész a kert! (N növény)"; amíg nem, üres.
+  h. (bónusz) Nyilakkal mozgó "player" cella, kőre/pályán kívülre nem léphet.
+-->
+<div id="seeds"></div>
+<table id="garden"></table>
+<p id="status"></p>
+
+<script>
+const garden = {
+  rows: 5, cols: 6,
+  rocks: [{ row: 0, col: 3 }, { row: 2, col: 1 }, { row: 3, col: 4 }],
+  water: { row: 4, col: 0 },
+  seeds: ["rózsa", "tulipán", "nárcisz", "levendula"],
+};
+
+// a starterben adott segédfüggvény
+function delegate(parent, child, when, what) {
+  function eventHandlerFunction(event) {
+    const closestChild = event.target.closest(child);
+    if (this.contains(closestChild)) what(event, closestChild);
+  }
+  parent.addEventListener(when, eventHandlerFunction);
+}
+</script>
+
+<script>
+// ======================= MEGOLDÁS =======================
+const table    = document.querySelector("#garden");
+const seedsDiv = document.querySelector("#seeds");
+const statusEl = document.querySelector("#status");
+
+// a) generálás
+for (let r = 0; r < garden.rows; r++) {
+  const tr = document.createElement("tr");
+  for (let c = 0; c < garden.cols; c++) {
+    const td = document.createElement("td");
+    td.dataset.row = r;
+    td.dataset.col = c;
+    tr.appendChild(td);
+  }
+  table.appendChild(tr);
+}
+const cell = (r, c) => table.rows[r].cells[c];
+
+// b) kövek, víz
+garden.rocks.forEach(({ row, col }) => cell(row, col).classList.add("rock"));
+cell(garden.water.row, garden.water.col).classList.add("water");
+
+// c) gombok
+for (const s of garden.seeds) {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.classList.add("seed");
+  b.textContent = s;
+  b.dataset.plant = s;
+  seedsDiv.appendChild(b);
+}
+
+// d) kijelölés delegálással
+delegate(seedsDiv, "button.seed", "click", (e, btn) => {
+  const prev = seedsDiv.querySelector(".seed.selected");
+  if (prev && prev !== btn) prev.classList.remove("selected");
+  btn.classList.toggle("selected");
+});
+
+// szomszédok (pályán belül)
+function neighbors(r, c) {
+  return [[r - 1, c], [r + 1, c], [r, c - 1], [r, c + 1]]
+    .filter(([y, x]) => y >= 0 && y < garden.rows && x >= 0 && x < garden.cols);
+}
+
+// e) f) g) cellák delegálással
+delegate(table, "td", "click", (e, td) => {
+  const r = Number(td.dataset.row);       // vagy td.parentElement.rowIndex
+  const c = Number(td.dataset.col);       // vagy td.cellIndex
+
+  // f) beültetett cella -> szomszédok toggle
+  if (td.classList.contains("planted")) {
+    neighbors(r, c).forEach(([y, x]) => cell(y, x).classList.toggle("lit"));
+    return;
+  }
+
+  // e) ültetés
+  const seed = seedsDiv.querySelector(".seed.selected");
+  if (!seed) return;
+  if (td.classList.contains("rock") || td.classList.contains("water")) return;
+
+  td.classList.add("planted");
+  td.dataset.plant = seed.dataset.plant;
+  seed.remove();
+
+  // g) kész-e
+  if (seedsDiv.querySelectorAll(".seed").length === 0) {
+    const n = table.querySelectorAll("td.planted").length;
+    statusEl.textContent = `Kész a kert! (${n} növény)`;
+  }
+});
+
+// h) bónusz: billentyűzetes mozgás
+let pos = { r: 0, c: 0 };
+cell(0, 0).classList.add("player");
+document.addEventListener("keydown", e => {
+  const dirs = { ArrowUp: [-1, 0], ArrowDown: [1, 0], ArrowLeft: [0, -1], ArrowRight: [0, 1] };
+  const d = dirs[e.key];
+  if (!d) return;
+  e.preventDefault();
+  const nr = pos.r + d[0], nc = pos.c + d[1];
+  if (nr < 0 || nr >= garden.rows || nc < 0 || nc >= garden.cols) return;  // pályán kívül
+  if (cell(nr, nc).classList.contains("rock")) return;                      // kő
+  cell(pos.r, pos.c).classList.remove("player");
+  pos = { r: nr, c: nc };
+  cell(nr, nc).classList.add("player");
+});
+</script>
+</body>
+</html>
