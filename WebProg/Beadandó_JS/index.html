@@ -3,14 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mayer Hedda">
 
     <link rel="stylesheet" href="style.css">
 
-    <script type="module" src="js/main.js"></script>
-
-    <title>Beadandó</title>
+    <title>Nevenincs király földosztása</title>
 </head>
 <body>
-    
+
+    <section id="menu-screen" class="screen">
+        <header class="hero">
+            <p class="hero-crown" aria-hidden="true">♛</p>
+            <h1>Nevenincs király földosztása</h1>
+        </header>
+
+        <div class="menu-layout">
+            <form id="start-form" class="card" novalidate>
+                <h2>Új játék</h2>
+
+                <label for="player-name" class="field-label">Neved</label>
+                <input id="player-name" name="playerName" type="text" maxlength="30"
+                       required autocomplete="nickname" placeholder="Írd be a neved...">
+                <p id="name-error" class="field-error" hidden>A név megadása kötelező.</p>
+
+                <fieldset class="level-picker">
+                    <legend class="field-label">Pálya</legend>
+                    <div class="level-options">
+                        <label class="level-option">
+                            <input type="radio" name="level" value="easy" checked>
+                            <span class="level-text"><strong>Könnyű</strong><span class="level-meta">5×5</span></span>
+                        </label>
+                        <label class="level-option">
+                            <input type="radio" name="level" value="medium">
+                            <span class="level-text"><strong>Közepes</strong><span class="level-meta">7×7</span></span>
+                        </label>
+                        <label class="level-option">
+                            <input type="radio" name="level" value="hard">
+                            <span class="level-text"><strong>Nehéz</strong><span class="level-meta">10×10</span></span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn btn-primary">Játék indítása</button>
+            </form>
+
+            <div class="card">
+                <nav id="menu-tabs" class="tabs">
+                    <button type="button" class="tab active" data-tab="saves">Mentett játékok</button>
+                    <button type="button" class="tab" data-tab="leaderboard">Dicsőségkönyv</button>
+                    <button type="button" class="tab" data-tab="rules">Játékszabályok</button>
+                </nav>
+
+                <div class="tab-panel" data-panel="saves">
+                    <ul id="save-list" class="save-list"></ul>
+                </div>
+
+                <div class="tab-panel" data-panel="leaderboard" hidden>
+                    <div id="leaderboard" class="leaderboard"></div>
+                </div>
+
+                <div class="tab-panel rules" data-panel="rules" hidden>
+                    <p>
+                        A táblán házak állnak, rajtuk a lakók száma. Oszd fel a földet úgy,
+                        hogy <strong>minden házhoz pontosan annyi mező tartozzon, ahányan benne laknak</strong>
+                        (a ház mezője is beleszámít), a birtokokat pedig falak válasszák el.
+                    </p>
+                    <h3>A megoldás feltételei</h3>
+                    <ol>
+                        <li>Minden birtok mérete egyezik a házon lévő számmal.</li>
+                        <li>Minden birtok összefüggő (csak vízszintesen és függőlegesen; az átló nem számít).</li>
+                        <li>Minden birtokon pontosan egy ház van.</li>
+                        <li>Különböző birtokok oldalukkal nem érintkezhetnek, csak sarkukkal.</li>
+                        <li>A falak egyetlen összefüggő hálózatot alkotnak.</li>
+                        <li>Sehol sincs teljesen fallal kitöltött 2×2-es terület.</li>
+                    </ol>
+                    <h3>Irányítás</h3>
+                    <ul>
+                        <li><strong>Bal kattintás:</strong> fal építése / lebontása. Lenyomva tartva és húzva több mezőt is módosíthatsz.</li>
+                        <li><strong>Jobb kattintás:</strong> mező megjelölése birtokként (biztosan nincs rajta fal), ismételt kattintásra a jelölés törlődik. Ez is húzható.</li>
+                        <li>A házak nem módosíthatók.</li>
+                        <li>A játék akkor ér véget, ha minden mező el van döntve, és minden szabály teljesül.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="game-screen" class="screen" hidden>
+        <header class="game-header card">
+            <div class="info">
+                <span class="info-label">Játékos</span>
+                <strong id="game-player"></strong>
+            </div>
+            <div class="info">
+                <span class="info-label">Pálya</span>
+                <strong id="game-level"></strong>
+            </div>
+            <div class="info">
+                <span class="info-label">Eltelt idő</span>
+                <strong id="game-timer" class="timer">00:00</strong>
+            </div>
+            <div class="header-actions">
+                <button type="button" id="save-button" class="btn">Mentés</button>
+                <button type="button" id="menu-button" class="btn btn-ghost">Főmenü</button>
+            </div>
+        </header>
+
+        <div class="game-layout">
+            <div class="board-wrap">
+                <div id="board" class="board" aria-label="Játéktábla"></div>
+            </div>
+
+            <aside class="sidebar card">
+                <h2>Jelmagyarázat</h2>
+                <ul class="legend">
+                    <li><span class="swatch swatch-house">3</span> Ház – nem módosítható</li>
+                    <li><span class="swatch swatch-wall"></span> Fal – bal kattintás</li>
+                    <li><span class="swatch swatch-land"></span> Birtok – jobb kattintás</li>
+                    <li><span class="swatch"></span> Eldöntetlen mező</li>
+                    <li><span class="swatch swatch-error"></span> Szabálysértés</li>
+                </ul>
+
+                <h2>Állapot</h2>
+                <p id="progress" class="progress"></p>
+                <ul id="error-list" class="error-list" aria-live="polite"></ul>
+                <p id="save-status" class="save-status" aria-live="polite"></p>
+            </aside>
+        </div>
+    </section>
+
+    <dialog id="win-dialog" class="win-dialog">
+        <p class="hero-crown" aria-hidden="true">♛</p>
+        <h2>A király elégedett!</h2>
+        <p>Igazságos földosztás – gratulálunk, <strong id="win-player"></strong>!</p>
+        <dl class="win-stats">
+            <div><dt>Pálya</dt><dd id="win-level"></dd></div>
+            <div><dt>Idő</dt><dd id="win-time"></dd></div>
+        </dl>
+        <button type="button" id="win-menu-button" class="btn btn-primary">Vissza a főmenübe</button>
+    </dialog>
+
+    <script src="js/levels.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
