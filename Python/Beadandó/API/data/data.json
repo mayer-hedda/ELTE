@@ -1,0 +1,79 @@
+{
+  "Students": [
+    {
+      "id": 1,
+      "name": "Kovács Kitti",
+      "email": "kitti.kovacs@student.elte.hu",
+      "neptun": "ABC123"
+    },
+    {
+      "id": 2,
+      "name": "Nagy Norbert",
+      "email": "norbert.nagy@student.elte.hu",
+      "neptun": "XYZ789"
+    },
+    {
+      "id": 3,
+      "name": "Tóth Tímea",
+      "email": "timea.toth@student.elte.hu",
+      "neptun": "Q1W2E3"
+    }
+  ],
+  "Semesters": [
+    {
+      "id": 101,
+      "student_id": 1,
+      "term": "2026/27/1",
+      "courses": [
+        {
+          "course_id": 201,
+          "code": "IP-18PROGEG",
+          "name": "Programozás",
+          "credit": 5,
+          "grade": 4
+        },
+        {
+          "course_id": 202,
+          "code": "IP-18AN1EG",
+          "name": "Analízis I.",
+          "credit": 4,
+          "grade": 3
+        },
+        {
+          "course_id": 203,
+          "code": "IP-18PYTH",
+          "name": "Python programozás",
+          "credit": 3,
+          "grade": null
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "student_id": 2,
+      "term": "2026/27/1",
+      "courses": [
+        {
+          "course_id": 204,
+          "code": "IP-18ADATB",
+          "name": "Adatbázisok",
+          "credit": 4,
+          "grade": 5
+        },
+        {
+          "course_id": 205,
+          "code": "IP-18WEBPROG",
+          "name": "Webprogramozás",
+          "credit": 3,
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "student_id": 3,
+      "term": "2026/27/1",
+      "courses": []
+    }
+  ]
+}
