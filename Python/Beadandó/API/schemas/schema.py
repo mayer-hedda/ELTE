@@ -31,26 +31,6 @@ UniversityName = 'ELTE Tanulmányi Rendszer'
 
 MAX_CREDITS_PER_SEMESTER = 30
 
-NEPTUN_PATTERN = r"[A-Z0-9]{6}"
-TERM_PATTERN = r"\d{4}/\d{2}/[12]"
-
-
-def validate_non_negative(value: int, field_name: str) -> int:
-    '''Közös ellenőrzés az int típusú azonosítókhoz.'''
-    if value < 0:
-        raise ValueError(f"A(z) {field_name} mező nem lehet negatív: {value}")
-    return value
-
-
-def validate_term(value: str) -> str:
-    '''A félév formátuma: ÉÉÉÉ/ÉÉ/F, ahol F csak 1 vagy 2 lehet (pl. 2026/27/1).'''
-    value = value.strip()
-    if not re.fullmatch(TERM_PATTERN, value):
-        raise ValueError(
-            f"Hibás félév formátum: '{value}'. Elvárt formátum: ÉÉÉÉ/ÉÉ/F, pl. 2026/27/1 (F csak 1 vagy 2 lehet)"
-        )
-    return value
-
 
 class Course(BaseModel):
     course_id: int
@@ -61,69 +41,74 @@ class Course(BaseModel):
 
     @field_validator("course_id")
     @classmethod
-    def validate_course_id(cls, value: int) -> int:
-        return validate_non_negative(value, "course_id")
+    def azonosito_ellenorzes(cls, azonosito: int) -> int:
+        if azonosito < 0:
+            raise ValueError(f"A course_id nem lehet negatív: {azonosito}")
+        return azonosito
 
     @field_validator("code")
     @classmethod
-    def validate_code(cls, value: str) -> str:
-        value = value.strip()
-        if not 3 <= len(value) <= 20:
+    def kod_ellenorzes(cls, kod: str) -> str:
+        if len(kod) < 3 or len(kod) > 20:
             raise ValueError("A tárgy kódja 3-20 karakter hosszú lehet")
-        return value
+        return kod
 
     @field_validator("name")
     @classmethod
-    def validate_name(cls, value: str) -> str:
-        value = value.strip()
-        if not value:
+    def nev_ellenorzes(cls, nev: str) -> str:
+        if nev.strip() == "":
             raise ValueError("A tárgy neve nem lehet üres")
-        return value
+        return nev
 
     @field_validator("credit")
     @classmethod
-    def validate_credit(cls, value: int) -> int:
-        if not 1 <= value <= MAX_CREDITS_PER_SEMESTER:
+    def kredit_ellenorzes(cls, kredit: int) -> int:
+        if kredit < 1 or kredit > MAX_CREDITS_PER_SEMESTER:
             raise ValueError(f"A kreditérték 1 és {MAX_CREDITS_PER_SEMESTER} közötti egész szám lehet")
-        return value
+        return kredit
 
     @field_validator("grade")
     @classmethod
-    def validate_grade(cls, value: Optional[int]) -> Optional[int]:
-        if value is None:
-            return value
-        if not 1 <= value <= 5:
-            raise ValueError("Az érdemjegy 1 és 5 közötti egész szám lehet (vagy null)")
-        return value
+    def jegy_ellenorzes(cls, jegy: Optional[int]) -> Optional[int]:
+        if jegy is None:
+            return jegy
+        if jegy < 1 or jegy > 5:
+            raise ValueError("Az érdemjegy 1 és 5 közötti egész szám lehet")
+        return jegy
 
 
 class Semester(BaseModel):
     id: int
     student_id: int
     term: str
-    courses: List[Course] = Field(default_factory=list)
+    courses: List[Course]
 
     @field_validator("id", "student_id")
     @classmethod
-    def validate_ids(cls, value: int, info) -> int:
-        return validate_non_negative(value, info.field_name)
+    def azonosito_ellenorzes(cls, azonosito: int, info) -> int:
+        if azonosito < 0:
+            raise ValueError(f"A(z) {info.field_name} nem lehet negatív: {azonosito}")
+        return azonosito
 
     @field_validator("term")
     @classmethod
-    def validate_term_field(cls, value: str) -> str:
-        return validate_term(value)
+    def felev_ellenorzes(cls, felev: str) -> str:
+        if re.fullmatch(r"\d{4}/\d{2}/[12]", felev) is None:
+            raise ValueError(f"Hibás félév formátum: {felev}, elvárt formátum: ÉÉÉÉ/ÉÉ/F, pl. 2026/27/1")
+        return felev
 
     @model_validator(mode="after")
-    def validate_courses(self) -> "Semester":
-        course_ids = [course.course_id for course in self.courses]
-        duplicates = sorted({cid for cid in course_ids if course_ids.count(cid) > 1})
-        if duplicates:
-            raise ValueError(f"Egy tárgy csak egyszer szerepelhet a félévben, ismétlődő course_id: {duplicates}")
-        total = sum(course.credit for course in self.courses)
-        if total > MAX_CREDITS_PER_SEMESTER:
-            raise ValueError(
-                f"A félév összkreditje legfeljebb {MAX_CREDITS_PER_SEMESTER} lehet (jelenleg: {total})"
-            )
+    def targyak_ellenorzese(self) -> "Semester":
+        targy_azonositok = []
+        osszkredit = 0
+        for targy in self.courses:
+            if targy.course_id in targy_azonositok:
+                raise ValueError(f"Egy tárgy csak egyszer szerepelhet a félévben: {targy.course_id}")
+            targy_azonositok.append(targy.course_id)
+            osszkredit += targy.credit
+
+        if osszkredit > MAX_CREDITS_PER_SEMESTER:
+            raise ValueError(f"A félév összkreditje legfeljebb {MAX_CREDITS_PER_SEMESTER} lehet (a módosítással: {osszkredit})")
         return self
 
 
@@ -135,24 +120,18 @@ class Student(BaseModel):
 
     @field_validator("id")
     @classmethod
-    def validate_id(cls, value: int) -> int:
-        return validate_non_negative(value, "id")
-
-    @field_validator("name")
-    @classmethod
-    def validate_name(cls, value: str) -> str:
-        value = value.strip()
-        if not value:
-            raise ValueError("A hallgató neve nem lehet üres")
-        return value
+    def azonosito_ellenorzes(cls, azonosito: int) -> int:
+        if azonosito < 0:
+            raise ValueError(f"Az id nem lehet negatív: {azonosito}")
+        return azonosito
 
     @field_validator("neptun")
     @classmethod
-    def validate_neptun(cls, value: str) -> str:
-        value = value.strip().upper()
-        if not re.fullmatch(NEPTUN_PATTERN, value):
+    def neptun_ellenorzes(cls, neptun_kod: str) -> str:
+        neptun_kod = neptun_kod.upper()
+        if re.fullmatch(r"[A-Z0-9]{6}", neptun_kod) is None:
             raise ValueError("A Neptun-kód pontosan 6 karakter, csak nagybetű (A-Z) és számjegy (0-9) lehet")
-        return value
+        return neptun_kod
 
 
 class Statistics(BaseModel):
@@ -162,23 +141,6 @@ class Statistics(BaseModel):
     completed_credits: int
     weighted_average: float
 
-    @field_validator("student_id", "total_credits", "completed_credits")
-    @classmethod
-    def validate_non_negative_ints(cls, value: int, info) -> int:
-        return validate_non_negative(value, info.field_name)
-
-    @field_validator("term")
-    @classmethod
-    def validate_term_field(cls, value: str) -> str:
-        return validate_term(value)
-
-    @field_validator("weighted_average")
-    @classmethod
-    def validate_average(cls, value: float) -> float:
-        if value != 0.0 and not 1.0 <= value <= 5.0:
-            raise ValueError("A kreditsúlyozott átlag 0.0, vagy 1 és 5 közötti érték lehet")
-        return round(value, 2)
-
 
 class DataStore(BaseModel):
     '''A data.json teljes tartalma - a mentés és visszatöltés ellenőrzéséhez.'''
@@ -186,38 +148,36 @@ class DataStore(BaseModel):
     Semesters: List[Semester]
 
     @model_validator(mode="after")
-    def validate_consistency(self) -> "DataStore":
-        student_ids = [s.id for s in self.Students]
-        duplicate_ids = sorted({i for i in student_ids if student_ids.count(i) > 1})
-        if duplicate_ids:
-            raise ValueError(f"Ismétlődő hallgatói azonosító(k): {duplicate_ids}")
+    def adatok_ellenorzese(self) -> "DataStore":
+        hallgato_azonositok = []
+        neptun_kodok = []
+        for hallgato in self.Students:
+            if hallgato.id in hallgato_azonositok:
+                raise ValueError(f"Ismétlődő hallgatói azonosító: {hallgato.id}")
+            if hallgato.neptun in neptun_kodok:
+                raise ValueError(f"Ismétlődő Neptun-kód: {hallgato.neptun}")
+            hallgato_azonositok.append(hallgato.id)
+            neptun_kodok.append(hallgato.neptun)
 
-        neptuns = [s.neptun for s in self.Students]
-        duplicate_neptuns = sorted({n for n in neptuns if neptuns.count(n) > 1})
-        if duplicate_neptuns:
-            raise ValueError(f"Ismétlődő Neptun-kód(ok): {duplicate_neptuns}")
-
-        semester_ids = [s.id for s in self.Semesters]
-        duplicate_semesters = sorted({i for i in semester_ids if semester_ids.count(i) > 1})
-        if duplicate_semesters:
-            raise ValueError(f"Ismétlődő félév-azonosító(k): {duplicate_semesters}")
-
-        owners = [s.student_id for s in self.Semesters]
-        multiple = sorted({i for i in owners if owners.count(i) > 1})
-        if multiple:
-            raise ValueError(f"Egy hallgatónak legfeljebb egy féléve lehet, több félév tartozik ehhez: {multiple}")
-
-        missing = sorted(set(owners) - set(student_ids))
-        if missing:
-            raise ValueError(f"Nem létező hallgatóhoz tartozó félév(ek), student_id: {missing}")
+        felev_azonositok = []
+        felevek_hallgatoi = []
+        for felev in self.Semesters:
+            if felev.id in felev_azonositok:
+                raise ValueError(f"Ismétlődő félév-azonosító: {felev.id}")
+            if felev.student_id in felevek_hallgatoi:
+                raise ValueError(f"Egy hallgatónak legfeljebb egy féléve lehet: {felev.student_id}")
+            if felev.student_id not in hallgato_azonositok:
+                raise ValueError(f"Nem létező hallgatóhoz tartozó félév: {felev.student_id}")
+            felev_azonositok.append(felev.id)
+            felevek_hallgatoi.append(felev.student_id)
         return self
 
 
 class ChangeCount(BaseModel):
     '''A visszatöltés során megváltozott rekordok száma fajtánként.'''
-    students: int = Field(ge=0)
-    semesters: int = Field(ge=0)
-    courses: int = Field(ge=0)
+    students: int
+    semesters: int
+    courses: int
 
 
 class ReloadResult(BaseModel):

@@ -1,13 +1,6 @@
 # Tesztelési dokumentáció – Kurzusfelvételi rendszer API
 
-A teszteket a `curl` parancssori HTTP kliens végezte a futó alkalmazáson
-(`uvicorn main:app --port 9000`). A dokumentációt a `teszt.sh` szkript
-generálta: minden kérésnél szerepel a kérés, a várt és a kapott státuszkód,
-valamint a válasz törzse. A tesztek a mellékelt `data.json` tesztadataiból
-indulnak, és egymásra épülnek (pl. a felvett hallgatóhoz adunk félévet).
-
-Futtatás ideje: 2026-11-11 11:02:00
-
+Futtatás ideje: 2026-11-11 22:53:01
 
 ## GET / (Route)
 
@@ -24,10 +17,9 @@ Válasz törzse:
 
 ```json
 {
-    "Üdvözöl a": "ELTE Tanulmányi Rendszer"
+  "Üdvözöl a": "ELTE Tanulmányi Rendszer"
 }
 ```
-
 
 ## POST /addstudent
 
@@ -46,10 +38,10 @@ Válasz törzse:
 
 ```json
 {
-    "id": 4,
-    "name": "Szabó Szilvia",
-    "email": "szilvia.szabo@student.elte.hu",
-    "neptun": "SZSZ44"
+  "id": 4,
+  "name": "Szabó Szilvia",
+  "email": "szilvia.szabo@student.elte.hu",
+  "neptun": "SZSZ44"
 }
 ```
 
@@ -68,7 +60,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Már létezik hallgató ezzel az ID-val: 1"
+  "detail": "Már létezik hallgató ezzel az ID-val: 1"
 }
 ```
 
@@ -87,7 +79,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Már létezik hallgató ezzel a Neptun-kóddal: ABC123"
+  "detail": "Már létezik hallgató ezzel a Neptun-kóddal: ABC123"
 }
 ```
 
@@ -106,32 +98,26 @@ Válasz törzse:
 
 ```json
 {
-    "detail": [
-        {
-            "type": "value_error",
-            "loc": [
-                "body",
-                "email"
-            ],
-            "msg": "value is not a valid email address: An email address must have an @-sign.",
-            "input": "nem-email",
-            "ctx": {
-                "reason": "An email address must have an @-sign."
-            }
-        },
-        {
-            "type": "value_error",
-            "loc": [
-                "body",
-                "neptun"
-            ],
-            "msg": "Value error, A Neptun-kód pontosan 6 karakter, csak nagybetű (A-Z) és számjegy (0-9) lehet",
-            "input": "AB-12",
-            "ctx": {
-                "error": {}
-            }
-        }
-    ]
+  "detail": [
+    {
+      "type": "value_error",
+      "loc": ["body", "email"],
+      "msg": "value is not a valid email address: An email address must have an @-sign.",
+      "input": "nem-email",
+      "ctx": {
+        "reason": "An email address must have an @-sign."
+      }
+    },
+    {
+      "type": "value_error",
+      "loc": ["body", "neptun"],
+      "msg": "Value error, A Neptun-kód pontosan 6 karakter, csak nagybetű (A-Z) és számjegy (0-9) lehet",
+      "input": "AB-12",
+      "ctx": {
+        "error": {}
+      }
+    }
+  ]
 }
 ```
 
@@ -150,23 +136,19 @@ Válasz törzse:
 
 ```json
 {
-    "detail": [
-        {
-            "type": "value_error",
-            "loc": [
-                "body",
-                "id"
-            ],
-            "msg": "Value error, A(z) id mező nem lehet negatív: -1",
-            "input": -1,
-            "ctx": {
-                "error": {}
-            }
-        }
-    ]
+  "detail": [
+    {
+      "type": "value_error",
+      "loc": ["body", "id"],
+      "msg": "Value error, Az id nem lehet negatív: -1",
+      "input": -1,
+      "ctx": {
+        "error": {}
+      }
+    }
+  ]
 }
 ```
-
 
 ## POST /addsemester
 
@@ -198,7 +180,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Nem található hallgató a megadott ID-val: 99"
+  "detail": "Nem található hallgató a megadott ID-val: 99"
 }
 ```
 
@@ -215,7 +197,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A hallgatónak már van féléve: 1"
+  "detail": "A hallgatónak már van féléve: 1"
 }
 ```
 
@@ -232,10 +214,9 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Hibás félév formátum: '2026/27/3'. Elvárt formátum: ÉÉÉÉ/ÉÉ/F, pl. 2026/27/1 (F csak 1 vagy 2 lehet)"
+  "detail": "Value error, Hibás félév formátum: 2026/27/3, elvárt formátum: ÉÉÉÉ/ÉÉ/F, pl. 2026/27/1"
 }
 ```
-
 
 ## POST /enrollcourse
 
@@ -254,18 +235,18 @@ Válasz törzse:
 
 ```json
 {
-    "id": 103,
-    "student_id": 3,
-    "term": "2026/27/1",
-    "courses": [
-        {
-            "course_id": 301,
-            "code": "IP-18SZAMEA",
-            "name": "Számítógépes architektúrák",
-            "credit": 4,
-            "grade": null
-        }
-    ]
+  "id": 103,
+  "student_id": 3,
+  "term": "2026/27/1",
+  "courses": [
+    {
+      "course_id": 301,
+      "code": "IP-18SZAMEA",
+      "name": "Számítógépes architektúrák",
+      "credit": 4,
+      "grade": null
+    }
+  ]
 }
 ```
 
@@ -284,7 +265,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A tárgy már fel van véve a félévben: 301"
+  "detail": "A tárgy már fel van véve a félévben: 301"
 }
 ```
 
@@ -303,7 +284,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Nem található félév a megadott hallgatói ID-hoz: 99"
+  "detail": "Nem található félév a megadott hallgatói ID-hoz: 99"
 }
 ```
 
@@ -322,7 +303,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A félév összkreditje legfeljebb 30 lehet (jelenleg: 32)"
+  "detail": "Value error, A félév összkreditje legfeljebb 30 lehet (a módosítással: 32)"
 }
 ```
 
@@ -341,59 +322,46 @@ Válasz törzse:
 
 ```json
 {
-    "detail": [
-        {
-            "type": "value_error",
-            "loc": [
-                "body",
-                "code"
-            ],
-            "msg": "Value error, A tárgy kódja 3-20 karakter hosszú lehet",
-            "input": "IP",
-            "ctx": {
-                "error": {}
-            }
-        },
-        {
-            "type": "value_error",
-            "loc": [
-                "body",
-                "name"
-            ],
-            "msg": "Value error, A tárgy neve nem lehet üres",
-            "input": "",
-            "ctx": {
-                "error": {}
-            }
-        },
-        {
-            "type": "value_error",
-            "loc": [
-                "body",
-                "credit"
-            ],
-            "msg": "Value error, A kreditérték 1 és 30 közötti egész szám lehet",
-            "input": 0,
-            "ctx": {
-                "error": {}
-            }
-        },
-        {
-            "type": "value_error",
-            "loc": [
-                "body",
-                "grade"
-            ],
-            "msg": "Value error, Az érdemjegy 1 és 5 közötti egész szám lehet (vagy null)",
-            "input": 6,
-            "ctx": {
-                "error": {}
-            }
-        }
-    ]
+  "detail": [
+    {
+      "type": "value_error",
+      "loc": ["body", "code"],
+      "msg": "Value error, A tárgy kódja 3-20 karakter hosszú lehet",
+      "input": "IP",
+      "ctx": {
+        "error": {}
+      }
+    },
+    {
+      "type": "value_error",
+      "loc": ["body", "name"],
+      "msg": "Value error, A tárgy neve nem lehet üres",
+      "input": "",
+      "ctx": {
+        "error": {}
+      }
+    },
+    {
+      "type": "value_error",
+      "loc": ["body", "credit"],
+      "msg": "Value error, A kreditérték 1 és 30 közötti egész szám lehet",
+      "input": 0,
+      "ctx": {
+        "error": {}
+      }
+    },
+    {
+      "type": "value_error",
+      "loc": ["body", "grade"],
+      "msg": "Value error, Az érdemjegy 1 és 5 közötti egész szám lehet",
+      "input": 6,
+      "ctx": {
+        "error": {}
+      }
+    }
+  ]
 }
 ```
-
 
 ## PUT /updatecourse
 
@@ -412,32 +380,32 @@ Válasz törzse:
 
 ```json
 {
-    "id": 101,
-    "student_id": 1,
-    "term": "2026/27/1",
-    "courses": [
-        {
-            "course_id": 201,
-            "code": "IP-18PROGEG",
-            "name": "Programozás",
-            "credit": 5,
-            "grade": 4
-        },
-        {
-            "course_id": 202,
-            "code": "IP-18AN1EG",
-            "name": "Analízis I.",
-            "credit": 4,
-            "grade": 3
-        },
-        {
-            "course_id": 203,
-            "code": "IP-18PYTH",
-            "name": "Python programozás",
-            "credit": 3,
-            "grade": 5
-        }
-    ]
+  "id": 101,
+  "student_id": 1,
+  "term": "2026/27/1",
+  "courses": [
+    {
+      "course_id": 201,
+      "code": "IP-18PROGEG",
+      "name": "Programozás",
+      "credit": 5,
+      "grade": 4
+    },
+    {
+      "course_id": 202,
+      "code": "IP-18AN1EG",
+      "name": "Analízis I.",
+      "credit": 4,
+      "grade": 3
+    },
+    {
+      "course_id": 203,
+      "code": "IP-18PYTH",
+      "name": "Python programozás",
+      "credit": 3,
+      "grade": 5
+    }
+  ]
 }
 ```
 
@@ -456,7 +424,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A tárgy azonosítója nem változhat: a paraméter 203, a törzsben 299"
+  "detail": "A tárgy azonosítója nem változhat: 203 helyett 299 érkezett"
 }
 ```
 
@@ -475,7 +443,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A tárgy nincs felvéve a félévben: 299"
+  "detail": "A tárgy nincs felvéve a félévben: 299"
 }
 ```
 
@@ -494,10 +462,9 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A félév összkreditje legfeljebb 30 lehet (jelenleg: 34)"
+  "detail": "Value error, A félév összkreditje legfeljebb 30 lehet (a módosítással: 34)"
 }
 ```
-
 
 ## DELETE /dropcourse
 
@@ -514,10 +481,10 @@ Válasz törzse:
 
 ```json
 {
-    "id": 103,
-    "student_id": 3,
-    "term": "2026/27/1",
-    "courses": []
+  "id": 103,
+  "student_id": 3,
+  "term": "2026/27/1",
+  "courses": []
 }
 ```
 
@@ -534,7 +501,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A tárgy nincs felvéve a félévben: 301"
+  "detail": "A tárgy nincs felvéve a félévben: 301"
 }
 ```
 
@@ -551,10 +518,9 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Nem található félév a megadott hallgatói ID-hoz: 99"
+  "detail": "Nem található félév a megadott hallgatói ID-hoz: 99"
 }
 ```
-
 
 ## GET /student
 
@@ -571,10 +537,10 @@ Válasz törzse:
 
 ```json
 {
-    "id": 1,
-    "name": "Kovács Kitti",
-    "email": "kitti.kovacs@student.elte.hu",
-    "neptun": "ABC123"
+  "id": 1,
+  "name": "Kovács Kitti",
+  "email": "kitti.kovacs@student.elte.hu",
+  "neptun": "ABC123"
 }
 ```
 
@@ -591,7 +557,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Nem található hallgató a megadott ID-val: 99"
+  "detail": "Nem található hallgató a megadott ID-val: 99"
 }
 ```
 
@@ -608,20 +574,16 @@ Válasz törzse:
 
 ```json
 {
-    "detail": [
-        {
-            "type": "int_parsing",
-            "loc": [
-                "query",
-                "studentid"
-            ],
-            "msg": "Input should be a valid integer, unable to parse string as an integer",
-            "input": "abc"
-        }
-    ]
+  "detail": [
+    {
+      "type": "int_parsing",
+      "loc": ["query", "studentid"],
+      "msg": "Input should be a valid integer, unable to parse string as an integer",
+      "input": "abc"
+    }
+  ]
 }
 ```
-
 
 ## GET /students
 
@@ -638,30 +600,30 @@ Válasz törzse:
 
 ```json
 [
-    {
-        "id": 1,
-        "name": "Kovács Kitti",
-        "email": "kitti.kovacs@student.elte.hu",
-        "neptun": "ABC123"
-    },
-    {
-        "id": 2,
-        "name": "Nagy Norbert",
-        "email": "norbert.nagy@student.elte.hu",
-        "neptun": "XYZ789"
-    },
-    {
-        "id": 3,
-        "name": "Tóth Tímea",
-        "email": "timea.toth@student.elte.hu",
-        "neptun": "Q1W2E3"
-    },
-    {
-        "id": 4,
-        "name": "Szabó Szilvia",
-        "email": "szilvia.szabo@student.elte.hu",
-        "neptun": "SZSZ44"
-    }
+  {
+    "id": 1,
+    "name": "Kovács Kitti",
+    "email": "kitti.kovacs@student.elte.hu",
+    "neptun": "ABC123"
+  },
+  {
+    "id": 2,
+    "name": "Nagy Norbert",
+    "email": "norbert.nagy@student.elte.hu",
+    "neptun": "XYZ789"
+  },
+  {
+    "id": 3,
+    "name": "Tóth Tímea",
+    "email": "timea.toth@student.elte.hu",
+    "neptun": "Q1W2E3"
+  },
+  {
+    "id": 4,
+    "name": "Szabó Szilvia",
+    "email": "szilvia.szabo@student.elte.hu",
+    "neptun": "SZSZ44"
+  }
 ]
 ```
 
@@ -678,10 +640,9 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Method Not Allowed"
+  "detail": "Method Not Allowed"
 }
 ```
-
 
 ## GET /semester
 
@@ -698,27 +659,27 @@ Válasz törzse:
 
 ```json
 [
-    {
-        "course_id": 201,
-        "code": "IP-18PROGEG",
-        "name": "Programozás",
-        "credit": 5,
-        "grade": 4
-    },
-    {
-        "course_id": 202,
-        "code": "IP-18AN1EG",
-        "name": "Analízis I.",
-        "credit": 4,
-        "grade": 3
-    },
-    {
-        "course_id": 203,
-        "code": "IP-18PYTH",
-        "name": "Python programozás",
-        "credit": 3,
-        "grade": 5
-    }
+  {
+    "course_id": 201,
+    "code": "IP-18PROGEG",
+    "name": "Programozás",
+    "credit": 5,
+    "grade": 4
+  },
+  {
+    "course_id": 202,
+    "code": "IP-18AN1EG",
+    "name": "Analízis I.",
+    "credit": 4,
+    "grade": 3
+  },
+  {
+    "course_id": 203,
+    "code": "IP-18PYTH",
+    "name": "Python programozás",
+    "credit": 3,
+    "grade": 5
+  }
 ]
 ```
 
@@ -750,10 +711,9 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Nem található félév a megadott hallgatói ID-hoz: 99"
+  "detail": "Nem található félév a megadott hallgatói ID-hoz: 99"
 }
 ```
-
 
 ## GET /getaverage
 
@@ -770,11 +730,11 @@ Válasz törzse:
 
 ```json
 {
-    "student_id": 1,
-    "term": "2026/27/1",
-    "total_credits": 12,
-    "completed_credits": 9,
-    "weighted_average": 3.56
+  "student_id": 1,
+  "term": "2026/27/1",
+  "total_credits": 12,
+  "completed_credits": 9,
+  "weighted_average": 3.56
 }
 ```
 
@@ -791,11 +751,11 @@ Válasz törzse:
 
 ```json
 {
-    "student_id": 4,
-    "term": "2026/27/1",
-    "total_credits": 0,
-    "completed_credits": 0,
-    "weighted_average": 0.0
+  "student_id": 4,
+  "term": "2026/27/1",
+  "total_credits": 0,
+  "completed_credits": 0,
+  "weighted_average": 0.0
 }
 ```
 
@@ -812,10 +772,9 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Nem található félév a megadott hallgatói ID-hoz: 99"
+  "detail": "Nem található félév a megadott hallgatói ID-hoz: 99"
 }
 ```
-
 
 ## POST /save
 
@@ -832,9 +791,9 @@ Válasz törzse:
 
 ```json
 {
-    "message": "Sikeres mentés.",
-    "source": "data.json",
-    "dest": "backup.json"
+  "message": "Sikeres mentés.",
+  "source": "data.json",
+  "dest": "backup.json"
 }
 ```
 
@@ -851,7 +810,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Csak egyszerű fájlnév adható meg, könyvtár nélkül: ../main.json"
+  "detail": "Csak a data könyvtárban lévő, .json kiterjesztésű fájlnév adható meg: ../main.json"
 }
 ```
 
@@ -868,7 +827,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Csak .json kiterjesztésű fájl adható meg: backup.txt"
+  "detail": "Csak a data könyvtárban lévő, .json kiterjesztésű fájlnév adható meg: backup.txt"
 }
 ```
 
@@ -885,7 +844,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A forrás és a cél fájl nem lehet azonos"
+  "detail": "A forrás és a cél fájl nem lehet azonos"
 }
 ```
 
@@ -902,7 +861,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A fájl nem található: nincs.json"
+  "detail": "A fájl nem található: nincs.json"
 }
 ```
 
@@ -919,10 +878,9 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A(z) teszt_hibas.json tartalma hibás: Nem létező hallgatóhoz tartozó félév(ek), student_id: [9]"
+  "detail": "Value error, Nem létező hallgatóhoz tartozó félév: 9"
 }
 ```
-
 
 ## POST /reload
 
@@ -939,26 +897,26 @@ Válasz törzse:
 
 ```json
 {
-    "message": "Sikeres visszatöltés.",
-    "source": "backup.json",
-    "dest": "data.json",
-    "mode": "merge",
-    "keep_extra": true,
-    "added": {
-        "students": 0,
-        "semesters": 0,
-        "courses": 1
-    },
-    "removed": {
-        "students": 0,
-        "semesters": 0,
-        "courses": 0
-    },
-    "updated": {
-        "students": 0,
-        "semesters": 0,
-        "courses": 0
-    }
+  "message": "Sikeres visszatöltés.",
+  "source": "backup.json",
+  "dest": "data.json",
+  "mode": "merge",
+  "keep_extra": true,
+  "added": {
+    "students": 0,
+    "semesters": 0,
+    "courses": 1
+  },
+  "removed": {
+    "students": 0,
+    "semesters": 0,
+    "courses": 0
+  },
+  "updated": {
+    "students": 0,
+    "semesters": 0,
+    "courses": 0
+  }
 }
 ```
 
@@ -975,26 +933,26 @@ Válasz törzse:
 
 ```json
 {
-    "message": "Sikeres visszatöltés.",
-    "source": "backup.json",
-    "dest": "data.json",
-    "mode": "merge",
-    "keep_extra": false,
-    "added": {
-        "students": 0,
-        "semesters": 0,
-        "courses": 0
-    },
-    "removed": {
-        "students": 1,
-        "semesters": 0,
-        "courses": 0
-    },
-    "updated": {
-        "students": 0,
-        "semesters": 0,
-        "courses": 0
-    }
+  "message": "Sikeres visszatöltés.",
+  "source": "backup.json",
+  "dest": "data.json",
+  "mode": "merge",
+  "keep_extra": false,
+  "added": {
+    "students": 0,
+    "semesters": 0,
+    "courses": 0
+  },
+  "removed": {
+    "students": 1,
+    "semesters": 0,
+    "courses": 0
+  },
+  "updated": {
+    "students": 0,
+    "semesters": 0,
+    "courses": 0
+  }
 }
 ```
 
@@ -1011,26 +969,26 @@ Válasz törzse:
 
 ```json
 {
-    "message": "Sikeres visszatöltés.",
-    "source": "backup.json",
-    "dest": "data.json",
-    "mode": "replace",
-    "keep_extra": true,
-    "added": {
-        "students": 0,
-        "semesters": 0,
-        "courses": 0
-    },
-    "removed": {
-        "students": 0,
-        "semesters": 0,
-        "courses": 0
-    },
-    "updated": {
-        "students": 0,
-        "semesters": 0,
-        "courses": 1
-    }
+  "message": "Sikeres visszatöltés.",
+  "source": "backup.json",
+  "dest": "data.json",
+  "mode": "replace",
+  "keep_extra": true,
+  "added": {
+    "students": 0,
+    "semesters": 0,
+    "courses": 0
+  },
+  "removed": {
+    "students": 0,
+    "semesters": 0,
+    "courses": 0
+  },
+  "updated": {
+    "students": 0,
+    "semesters": 0,
+    "courses": 1
+  }
 }
 ```
 
@@ -1047,26 +1005,26 @@ Válasz törzse:
 
 ```json
 {
-    "message": "Sikeres visszatöltés.",
-    "source": "backup.json",
-    "dest": "teszt_uj.json",
-    "mode": "merge",
-    "keep_extra": true,
-    "added": {
-        "students": 4,
-        "semesters": 4,
-        "courses": 5
-    },
-    "removed": {
-        "students": 0,
-        "semesters": 0,
-        "courses": 0
-    },
-    "updated": {
-        "students": 0,
-        "semesters": 0,
-        "courses": 0
-    }
+  "message": "Sikeres visszatöltés.",
+  "source": "backup.json",
+  "dest": "teszt_uj.json",
+  "mode": "merge",
+  "keep_extra": true,
+  "added": {
+    "students": 4,
+    "semesters": 4,
+    "courses": 5
+  },
+  "removed": {
+    "students": 0,
+    "semesters": 0,
+    "courses": 0
+  },
+  "updated": {
+    "students": 0,
+    "semesters": 0,
+    "courses": 0
+  }
 }
 ```
 
@@ -1083,7 +1041,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Az összefésült adatok ellentmondásosak: Ismétlődő Neptun-kód(ok): ['ABC123']"
+  "detail": "Value error, Ismétlődő Neptun-kód: ABC123"
 }
 ```
 
@@ -1100,7 +1058,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A(z) teszt_hibas.json tartalma hibás: Nem létező hallgatóhoz tartozó félév(ek), student_id: [9]"
+  "detail": "Value error, Nem létező hallgatóhoz tartozó félév: 9"
 }
 ```
 
@@ -1117,7 +1075,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A fájl nem található: nincs.json"
+  "detail": "A fájl nem található: nincs.json"
 }
 ```
 
@@ -1134,7 +1092,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "Csak egyszerű fájlnév adható meg, könyvtár nélkül: ../backup.json"
+  "detail": "Csak a data könyvtárban lévő, .json kiterjesztésű fájlnév adható meg: ../backup.json"
 }
 ```
 
@@ -1151,7 +1109,7 @@ Válasz törzse:
 
 ```json
 {
-    "detail": "A forrás és a cél fájl nem lehet azonos"
+  "detail": "A forrás és a cél fájl nem lehet azonos"
 }
 ```
 
@@ -1168,20 +1126,17 @@ Válasz törzse:
 
 ```json
 {
-    "detail": [
-        {
-            "type": "literal_error",
-            "loc": [
-                "query",
-                "mode"
-            ],
-            "msg": "Input should be 'replace' or 'merge'",
-            "input": "append",
-            "ctx": {
-                "expected": "'replace' or 'merge'"
-            }
-        }
-    ]
+  "detail": [
+    {
+      "type": "literal_error",
+      "loc": ["query", "mode"],
+      "msg": "Input should be 'replace' or 'merge'",
+      "input": "append",
+      "ctx": {
+        "expected": "'replace' or 'merge'"
+      }
+    }
+  ]
 }
 ```
 
@@ -1198,33 +1153,32 @@ Válasz törzse:
 
 ```json
 [
-    {
-        "id": 1,
-        "name": "Kovács Kitti",
-        "email": "kitti.kovacs@student.elte.hu",
-        "neptun": "ABC123"
-    },
-    {
-        "id": 2,
-        "name": "Nagy Norbert",
-        "email": "norbert.nagy@student.elte.hu",
-        "neptun": "XYZ789"
-    },
-    {
-        "id": 3,
-        "name": "Tóth Tímea",
-        "email": "timea.toth@student.elte.hu",
-        "neptun": "Q1W2E3"
-    },
-    {
-        "id": 4,
-        "name": "Szabó Szilvia",
-        "email": "szilvia.szabo@student.elte.hu",
-        "neptun": "SZSZ44"
-    }
+  {
+    "id": 1,
+    "name": "Kovács Kitti",
+    "email": "kitti.kovacs@student.elte.hu",
+    "neptun": "ABC123"
+  },
+  {
+    "id": 2,
+    "name": "Nagy Norbert",
+    "email": "norbert.nagy@student.elte.hu",
+    "neptun": "XYZ789"
+  },
+  {
+    "id": 3,
+    "name": "Tóth Tímea",
+    "email": "timea.toth@student.elte.hu",
+    "neptun": "Q1W2E3"
+  },
+  {
+    "id": 4,
+    "name": "Szabó Szilvia",
+    "email": "szilvia.szabo@student.elte.hu",
+    "neptun": "SZSZ44"
+  }
 ]
 ```
-
 
 ## Összesítés
 

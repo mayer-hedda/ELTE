@@ -59,65 +59,52 @@ from data.filereader import (
 JSON_FILE_PATH = os.path.join(os.path.dirname(__file__), "data.json")
 
 def load_json() -> Dict[str, Any]:
-    '''A data.json teljes tartalmának beolvasása.'''
-    try:
-        with open(JSON_FILE_PATH, "r", encoding="utf-8") as file:
-            data = json.load(file)
-    except FileNotFoundError:
-        raise ValueError("Az adatfájl (data.json) nem található")
-    except json.JSONDecodeError as e:
-        raise ValueError(f"Az adatfájl (data.json) nem érvényes JSON: {e}")
-    if not isinstance(data, dict):
-        raise ValueError("Az adatfájl (data.json) szerkezete hibás")
-    data.setdefault("Students", [])
-    data.setdefault("Semesters", [])
-    return data
+    with open(JSON_FILE_PATH, "r", encoding="utf-8") as fajl:
+        return json.load(fajl)
 
 def get_student_by_id(student_id: int) -> Dict[str, Any]:
-    '''Egy hallgató rekordja azonosító alapján (ValueError, ha nincs ilyen).'''
-    for student in load_json()["Students"]:
-        if student["id"] == student_id:
-            return student
+    for hallgato in load_json()["Students"]:
+        if hallgato["id"] == student_id:
+            return hallgato
     raise ValueError(f"Nem található hallgató a megadott ID-val: {student_id}")
 
 def get_semester_by_student_id(student_id: int) -> Dict[str, Any]:
-    '''A hallgató félévének teljes rekordja (ValueError, ha nincs féléve).'''
-    for semester in load_json()["Semesters"]:
-        if semester["student_id"] == student_id:
-            return semester
+    for felev in load_json()["Semesters"]:
+        if felev["student_id"] == student_id:
+            return felev
     raise ValueError(f"Nem található félév a megadott hallgatói ID-hoz: {student_id}")
 
 def get_courses_by_student_id(student_id: int) -> List[Dict[str, Any]]:
-    '''A hallgató félévében felvett tárgyak listája (üres félévnél üres lista).'''
-    return get_semester_by_student_id(student_id).get("courses", [])
+    felev = get_semester_by_student_id(student_id)
+    return felev["courses"]
 
 def get_all_students() -> List[Dict[str, Any]]:
-    '''Az összes hallgató (félévek nélkül).'''
     return load_json()["Students"]
 
 def get_statistics(student_id: int) -> Dict[str, Any]:
-    '''A hallgató kreditstatisztikája a félévében felvett tárgyak alapján.'''
-    semester = get_semester_by_student_id(student_id)
-    courses = semester.get("courses", [])
+    felev = get_semester_by_student_id(student_id)
 
-    total_credits = sum(course["credit"] for course in courses)
-    completed_credits = sum(
-        course["credit"] for course in courses
-        if course.get("grade") is not None and course["grade"] >= 2
-    )
-    graded = [course for course in courses if course.get("grade") is not None]
-    graded_credits = sum(course["credit"] for course in graded)
-    if graded_credits > 0:
-        weighted_average = round(
-            sum(course["credit"] * course["grade"] for course in graded) / graded_credits, 2
-        )
+    osszes_kredit = 0
+    teljesitett_kredit = 0
+    jeggyel_rendelkezo_kredit = 0
+    sulyozott_jegyek_osszege = 0
+    for targy in felev["courses"]:
+        osszes_kredit += targy["credit"]
+        if targy["grade"] is not None:
+            jeggyel_rendelkezo_kredit += targy["credit"]
+            sulyozott_jegyek_osszege += targy["credit"] * targy["grade"]
+            if targy["grade"] >= 2:
+                teljesitett_kredit += targy["credit"]
+
+    if jeggyel_rendelkezo_kredit > 0:
+        sulyozott_atlag = round(sulyozott_jegyek_osszege / jeggyel_rendelkezo_kredit, 2)
     else:
-        weighted_average = 0.0
+        sulyozott_atlag = 0.0
 
     return {
         "student_id": student_id,
-        "term": semester["term"],
-        "total_credits": total_credits,
-        "completed_credits": completed_credits,
-        "weighted_average": weighted_average,
+        "term": felev["term"],
+        "total_credits": osszes_kredit,
+        "completed_credits": teljesitett_kredit,
+        "weighted_average": sulyozott_atlag,
     }

@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-# A végpontok tesztelése curl segítségével.
-# A futó API-t (uvicorn main:app --port 9000) hívja, és a kéréseket, a várt és a
-# kapott státuszkódot, valamint a válasz törzsét a TESZTELES.md fájlba írja.
-# A data.json eredeti tartalmát a teszt végén visszaállítja.
-#
-# Használat (az API könyvtárában állva, futó szerver mellett):
-#   ./teszt.sh [BASE_URL]
 
 BASE="${1:-http://127.0.0.1:9000}"
 DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -21,12 +14,6 @@ FAIL=0
 cat > "$OUT" <<EOF
 # Tesztelési dokumentáció – Kurzusfelvételi rendszer API
 
-A teszteket a \`curl\` parancssori HTTP kliens végezte a futó alkalmazáson
-(\`uvicorn main:app --port 9000\`). A dokumentációt a \`teszt.sh\` szkript
-generálta: minden kérésnél szerepel a kérés, a várt és a kapott státuszkód,
-valamint a válasz törzse. A tesztek a mellékelt \`data.json\` tesztadataiból
-indulnak, és egymásra épülnek (pl. a felvett hallgatóhoz adunk félévet).
-
 Futtatás ideje: $(date "+%Y-%m-%d %H:%M:%S")
 
 EOF
@@ -35,7 +22,6 @@ section() {
     printf '\n## %s\n\n' "$1" >> "$OUT"
 }
 
-# t <leírás> <várt státusz> <metódus> <útvonal> [JSON törzs]
 t() {
     local desc="$1" expected="$2" method="$3" path="$4" body="$5"
     local resp code result
@@ -122,8 +108,6 @@ t "Sikeres: üres félév esetén üres lista" 200 GET "/semester?studentid=4"
 t "Hibás: nincs félév" 404 GET "/semester?studentid=99"
 
 section "GET /getaverage"
-# Az 1-es hallgató 203-as tárgyának jegyét a fenti teszt 5-re írta, ezért
-# először visszaállítjuk null-ra, hogy a leírásban szereplő példát kapjuk.
 curl -s -o /dev/null -X PUT "$BASE/updatecourse?studentid=1&courseid=203" -H 'Content-Type: application/json' \
   -d '{"course_id": 203, "code": "IP-18PYTH", "name": "Python programozás", "credit": 3, "grade": null}'
 t "Sikeres: kreditstatisztika (a leírás példája: 12 / 9 / 3.56)" 200 GET "/getaverage?studentid=1"
@@ -140,8 +124,6 @@ printf '{"Students": [{"id": 1, "name": "A", "email": "a@b.hu", "neptun": "AAA11
 t "Hibás: ellentmondásos tartalom (nem létező hallgató féléve)" 422 POST "/save?source=teszt_hibas.json&dest=teszt_x.json"
 
 section "POST /reload"
-# A mentés után új hallgatót veszünk fel, és töröljük a 2-es hallgató egyik tárgyát,
-# így a visszatöltés eredménye jól látható.
 curl -s -o /dev/null -X POST "$BASE/addstudent" -H 'Content-Type: application/json' \
   -d '{"id": 6, "name": "Kiss Kornél", "email": "kornel.kiss@student.elte.hu", "neptun": "KK0606"}'
 curl -s -o /dev/null -X DELETE "$BASE/dropcourse?studentid=2&courseid=205"
