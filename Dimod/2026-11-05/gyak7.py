@@ -75,15 +75,28 @@ def code_distance(code_words: list[str]) -> int:
 # 4. Írj függvényt, amely a egy egyenletes kódhoz tartozó kódhalmaz alapján elkészíti a dekódolási táblázatot minimális súlyú dekódoláshoz egy `dict` formájában!
 # Az összes 2^n lehetséges vett szó (bináris sorozat) generálása használható az itertools csomag product() függvénye.
 def error_correcting_table(C: list[str]) -> dict:
-    raise NotImplementedError
+    if not C:
+        return {}
+    n = len(C[0])
+    if any(len(c) != n for c in C):
+        raise ValueError("A kód nem egyenletes")
+    table = {}
+    for bits in itertools.product('01', repeat=n):
+        word = ''.join(bits)
+        table[word] = min(C, key=lambda c: hamming_distance(word, c))
+    return table
 
 # 5. Valósítsd meg a paritásbites kódolást páratlanra való kiegészítéssel!
 # A decode() metódus jelezze a hibát ValueError kivétellel.
 class ParCheckCode:
     def encode(self, binary_msg: str) -> str:
-        raise NotImplementedError
+        parity = '1' if binary_msg.count('1') % 2 == 0 else '0'
+        return binary_msg + parity
+
     def decode(self, binary_code: str) -> str:
-        raise NotImplementedError
+        if not binary_code or binary_code.count('1') % 2 == 0:
+            raise ValueError("Paritáshiba")
+        return binary_code[:-1]
 
 if __name__ == '__main__':
     def test_RepCode_encode() -> bool:
